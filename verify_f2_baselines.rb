@@ -5,7 +5,7 @@ require 'mysql'
 begin
     con = Mysql.new 'p2-utilsqlqa101.ad.prodcc.net', 'ctctopsread', 'gr8Dane', 'ctctops'
 
-    rs = con.query("SELECT group_concat(distinct app_name order by app_name separator ',') as app, group_concat(distinct concat(rpm_name, '_', rpm_version) order by rpm_name separator ',') as rpm_name, deploy_type, svr_group, hardware_name FROM apps_servers_mapping a, apps b, hardware c, environment d WHERE puppet='y' AND app_type='JBOSS' AND type<>'Camel' AND svr_group<>'4' AND a.app_id=b.app_id AND a.hwd_id=c.hwd_id AND c.env_id=d.env_id  AND env='f2' AND app_name<>'Impression' AND deploy_type<>2 GROUP BY hardware_name, deploy_type ORDER BY deploy_type, app, svr_group")
+    rs = con.query("SELECT b.hardware_name, rpm_name, app_name, c.rpm_version, c.last_status_check FROM apps a, hardware b, apps_servers_mapping c, environment d WHERE a.app_id=c.app_id AND b.hwd_id=c.hwd_id AND b.env_id=d.env_id AND env='f2' AND app_name<>'trackingsvc' AND deploy_type<>2 GROUP BY hardware_name, deploy_type ORDER BY deploy_type, app_name, svr_group")
     n_rows = rs.num_rows
     puts n_rows    
 
