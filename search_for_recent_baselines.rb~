@@ -1,0 +1,19 @@
+#!/usr/bin/ruby
+
+require 'mysql'
+
+begin
+    con = Mysql.new 'p2-if-utilsql01.ad.prodcc.net', 'ctctopsread', 'gr8Dane', 'ctctops'
+
+    rs = con.query("SELECT b.hardware_name, app_type, rpm_name, app_name, c.rpm_version, c.last_status_check FROM apps a, hardware b, apps_servers_mapping c, environment d WHERE a.app_id=c.app_id AND b.hwd_id=c.hwd_id AND b.env_id=d.env_id and c.rpm_version LIKE '%#{ARGV[0]}%'")
+    n_rows = rs.num_rows
+    puts n_rows    
+
+    n_rows.times do
+        begin
+            file = File.open("results.txt", "a")
+            file.write(rs.fetch_row)
+        end
+    end
+end
+
