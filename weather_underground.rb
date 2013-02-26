@@ -46,10 +46,6 @@ end
 
 puts " "
 puts "Forecast:"
-# [0,4].each do |i|
-#      arr = forecast['forecastday'][i]
-#      puts "    " + arr['title'] + ': ' + arr['fcttext'] + '.'
-#   end
-    puts "       " + forecast['txt_forecast'][0]['forecastdays'][0]['forecastday'][0]['title'][0] + ": " + forecast['txt_forecast'][0]['forecastdays'][0]['forecastday'][0]['fcttext'][0]
-#   puts "       " + forecast['txt_forecast'][0]['forecastdays'][1]['forecastday'][0]['title'][0] + ": " + forecast['txt_forecast'][0]['forecastdays'][1]['forecastday'][0]['fcttext'][0]
-# end
+(0..7).each do |i|
+    puts "       " + forecast['txt_forecast'][0]['forecastdays'][0]['forecastday'][i]['title'][0] + ": " + forecast['txt_forecast'][0]['forecastdays'][0]['forecastday'][i]['fcttext'][0]
+end
