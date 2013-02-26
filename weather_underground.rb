@@ -44,8 +44,12 @@ rescue
     exit
 end
 
-# puts "Forecast:"
-#   [0,1].each do |i|
+puts " "
+puts "Forecast:"
+# [0,4].each do |i|
 #      arr = forecast['forecastday'][i]
 #      puts "    " + arr['title'] + ': ' + arr['fcttext'] + '.'
 #   end
+    puts "       " + forecast['txt_forecast'][0]['forecastdays'][0]['forecastday'][0]['title'][0] + ": " + forecast['txt_forecast'][0]['forecastdays'][0]['forecastday'][0]['fcttext'][0]
+#   puts "       " + forecast['txt_forecast'][0]['forecastdays'][1]['forecastday'][0]['title'][0] + ": " + forecast['txt_forecast'][0]['forecastdays'][1]['forecastday'][0]['fcttext'][0]
+# end
