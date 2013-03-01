@@ -5,13 +5,14 @@ export search_text=`date +%Y%m%d`
 rm -f matches.txt
 rm -f results.txt
 
-./search_for_recent_baselines.rb 20130227
+./search_for_recent_baselines.rb 20130228
 
 for i in `cat results.txt | cut -d',' -f1 | cut -d'"' -f2 | sort -u`
 do 
-  grep $i results.txt | grep 20130227 >> matches.txt
+  grep $i results.txt | grep 20130228 >> matches.txt
 done
 
 # sort -u matches.txt | wc -l
-sort -u matches.txt | cut -d'.' -f1 | sort -u | wc -l
+# sort -u matches.txt | cut -d'.' -f1 | sort -u | wc -l
+sort -u matches.txt | cut -d'.' -f1 | egrep -v "Contacts-|Deals|Thumbnail|TrackingSVC|Simplecard" | sort -u | wc -l
 
