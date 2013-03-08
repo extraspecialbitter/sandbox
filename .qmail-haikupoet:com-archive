@@ -1,0 +1,5 @@
+/usr/home/mena/mail/new_haiku
+/usr/home/mena/mail/haiku_archive
+
+|/var/qmail/bin/preline /usr/home/mena/bin/append_new.sh
+
