@@ -5,7 +5,7 @@ require 'mysql'
 begin
     con = Mysql.new 'localhost', 'root', 'menagerie', 'haiku_archive'
 
-    con.query("DROP TABLE IF EXISTS archive_test")
+    con.query("DROP TABLE IF EXISTS archive_2012")
 
 rescue Mysql::Error => e
     puts e.errno
