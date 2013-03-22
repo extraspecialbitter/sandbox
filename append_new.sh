@@ -8,7 +8,8 @@ sleep 60
  
 export InFile=/usr/home/mena/mail/haiku_archive
 export OutFile=/usr/www/users/mena/haikupoet/archive
-export Hype=/usr/home/mena/bin/hypermail
+# export Hype=/usr/home/mena/bin/hypermail
+export Hype=/usr/local/bin/hypermail
 
 echo "processing the Haiku Archive mailbox for `date +%Y`" 
 $Hype -m $InFile -d $OutFile
