@@ -39,7 +39,7 @@ begin
     end
 #   puts @haiku_text
 #   puts @date_written
-    con.query("INSERT archive_2012(haiku_text, date_written) \
+    con.query("INSERT archive_test(haiku_text, date_written) \
         VALUES('#{@haiku_text}', '#{@date_written}')")
     fh.close
     exit(0)
