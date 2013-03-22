@@ -6,7 +6,7 @@ begin
     con = Mysql.new 'localhost', 'root', 'menagerie', 'haiku_archive'
 
     con.query("CREATE TABLE IF NOT EXISTS \
-        archive_2012(haiku_text VARCHAR(120), date_written CHAR(22))")
+        archive_test(haiku_text VARCHAR(120), date_written CHAR(22))")
 
     fh = File.open(ARGV[0])
     @date_row = true
