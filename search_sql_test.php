@@ -29,23 +29,26 @@
 
 <pre>
 <?php
+error_reporting(-1);
 $string = $_POST['keywords'];
-$matches = 0;
 // Connect to Database
 mysql_connect("localhost", "root", "menagerie") or die(mysql_error()); 
  mysql_select_db("haiku_archive") or die(mysql_error()); 
- $data = mysql_query("SELECT * FROM archive_text WHERE haiku_text LIKE $string") 
- or die(mysql_error()); 
- Print "<table border cellpadding=3>"; 
- while($info = mysql_fetch_array( $data )) 
- $matches = 1;
-}
+ $query = mysql_query("SELECT * FROM archive_test WHERE haiku_text LIKE '%$string%'");
+ if (!$query) {
+    $message  = 'Invalid query: ' . mysql_error() . "\n";
+    $message .= 'Whole query: ' . $query;
+    die($message);
+ }
 
-if ($matches == 0) {
-	echo "sorry, I haven&#8217;t written a haiku about ".$string." yet.";
-} 
+ while($row=mysql_fetch_row($query))
+ {
+    echo $row[0];
+    echo "     $row[1]";
+    echo "\n";
+    echo "\n";
+ }
 
-fclose($file); 
 ?>
 </pre>
 
