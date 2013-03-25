@@ -8,11 +8,11 @@ begin
     rs = con.query("SELECT * FROM archive_2012")
     n_rows = rs.num_rows
     
-    puts "There are #{n_rows} rows in the result set"
-    
     n_rows.times do
         puts rs.fetch_row.join("\s")
     end
+    
+    puts "There are #{n_rows} rows in the result set"
     
 rescue Mysql::Error => e
     puts e.errno
