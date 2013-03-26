@@ -57,13 +57,13 @@ class PlainTextExtractor < Nokogiri::XML::SAX::Document
 end
 
 fname = ARGV[0]
-start_column = 3
-end_column = 5
+start_column = 4
+end_column = 6
 
 target_range = (start_column-1)..(end_column-1)
 
 IO.foreach(fname) do |line|
-  if line.match(/<strong>Date:<\/strong>/)
+  if line.match(/<dfn>Date<\/dfn>/)
     pieces = line.split(" ")
 
     @date_string = pieces[target_range].join("-")
