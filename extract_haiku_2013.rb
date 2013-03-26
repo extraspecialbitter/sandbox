@@ -37,7 +37,7 @@ class PlainTextExtractor < Nokogiri::XML::SAX::Document
   # This callback method is called with any string between
   # a tag.
   def characters(string)
-    if @interesting and not @pre
+    if @interesting and not @address and not @pre
       @plaintext << string
     end
   end
