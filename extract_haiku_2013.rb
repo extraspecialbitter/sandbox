@@ -8,6 +8,7 @@ class PlainTextExtractor < Nokogiri::XML::SAX::Document
   def initialize
     @interesting = false
     @pre = false
+    @address = false
     @plaintext = ""
   end
 
@@ -20,6 +21,18 @@ class PlainTextExtractor < Nokogiri::XML::SAX::Document
   def end_element(name, attrs = [])
     if name == "pre"
       @pre = false
+    end
+  end
+
+  def start_element(name, attrs = [])
+    if name == "address"
+      @address = true
+    end
+  end
+
+  def end_element(name, attrs = [])
+    if name == "address"
+      @address = false
     end
   end
 
