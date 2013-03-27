@@ -34,21 +34,12 @@ IO.foreach(fname) do |line|
     @haiku_text << line
   end
 end
-# puts @haiku_text
 
 require "nokogiri"
 
 doc = Nokogiri::HTML(@haiku_text)
-doc.xpath('//address/following-sibling::p//text()').each {|n| p n}
+# doc.xpath('//address/following-sibling::p//text()').each {|n| p n}
+output = @date_string + $/
+doc.xpath('//address/following-sibling::p//text()').each { |line| output << ( line.text.strip + $/ ) }
 
-# puts doc
-
-begin
-  file = File.open("snippet.txt", "w")
-  file.write(@date_string) 
-# file.write(@haiku_text) 
-rescue IOError => e
-  #some error occur, dir not writable etc.
-ensure
-  file.close unless file == nil
-end
+File.write("snippet.txt", output)
