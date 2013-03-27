@@ -38,7 +38,6 @@ end
 require "nokogiri"
 
 doc = Nokogiri::HTML(@haiku_text)
-# doc.xpath('//address/following-sibling::p//text()').each {|n| p n}
 output = @date_string + $/
 doc.xpath('//address/following-sibling::p//text()').each { |line| output << ( line.text.strip + $/ ) }
 
