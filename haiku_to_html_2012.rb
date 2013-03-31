@@ -12,7 +12,7 @@ begin
 
     n_rows.times do
         begin
-            file = File.open("archive.html", "a")
+            file = File.open("archive_2012.html", "a")
             line = rs.fetch_row.to_s
             line.gsub!(/[\[\]",]/, '')
             file.write(line)
