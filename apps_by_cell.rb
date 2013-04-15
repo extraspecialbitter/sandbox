@@ -5,7 +5,7 @@ require 'mysql'
 begin
     con = Mysql.new 'p2-utilsqlqa101.ad.prodcc.net', 'ctctopsread', 'gr8Dane', 'ctctops'
 
-    rs = con.query("SELECT DISTINCT app_name, hardware_name, svr_group, env FROM apps_servers_mapping a, apps b, hardware, environment WHERE a.app_id=b.app_id AND svr_group IS NOT NULL AND app_name='SimplecardAppConfigServer' AND app_type='JBOSS' AND env='f1' ORDER BY app_name")
+    rs = con.query("SELECT DISTINCT app_name, hardware_name, svr_group, env FROM apps_servers_mapping a, apps b, hardware c, environment d WHERE a.app_id=b.app_id AND a.hwd_id=c.hwd_id AND c.env_id=d.env_id AND app_name='SimplecardAppConfigServer' AND app_type='JBOSS' AND env='f1' ORDER BY hardware_name")
     n_rows = rs.num_rows
 #   puts n_rows    
 
