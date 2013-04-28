@@ -60,6 +60,7 @@ end
 
 pte = PlainTextExtractor.new
 parser = Nokogiri::HTML::SAX::Parser.new(pte)
+parser.encoding = 'UTF-8'
 parser.parse_file ARGV[0]
 
 # puts pte.plaintext
