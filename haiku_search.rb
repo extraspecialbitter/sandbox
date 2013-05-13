@@ -10,13 +10,13 @@ begin
                     SELECT * FROM archive_2012 WHERE haiku_text LIKE '%#{ARGV[0]}%' UNION
                     SELECT * FROM archive_2013 WHERE haiku_text LIKE '%#{ARGV[0]}%'")
     n_rows = rs.num_rows
-#   puts n_rows    
 
+    
     n_rows.times do
         begin
-            file = File.open("results.html", "a")
-            file.write(rs.fetch_row)
-            file.puts "<br>"
+            puts(rs.fetch_row)
+            puts "<br>"
         end
     end
+    puts "There are #{n_rows} rows in the result set"
 end
