@@ -5,7 +5,8 @@ require 'mysql'
 begin
     con = Mysql.new 'localhost', 'root', 'menagerie', 'haiku_archive'
 
-    rs = con.query("SELECT * FROM archive_2008 WHERE haiku_text LIKE '%#{ARGV[0]}%' UNION
+    rs = con.query("SELECT * FROM archive_2007 WHERE haiku_text LIKE '%#{ARGV[0]}%' UNION
+                    SELECT * FROM archive_2008 WHERE haiku_text LIKE '%#{ARGV[0]}%' UNION
                     SELECT * FROM archive_2009 WHERE haiku_text LIKE '%#{ARGV[0]}%' UNION
                     SELECT * FROM archive_2010 WHERE haiku_text LIKE '%#{ARGV[0]}%' UNION
                     SELECT * FROM archive_2011 WHERE haiku_text LIKE '%#{ARGV[0]}%' UNION
