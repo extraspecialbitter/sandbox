@@ -5,6 +5,7 @@ rm -f ./archive_2012.html
 for i in `ls -1 /export/haiku_search/archive_2012/[01]???.html`
 do
   ./extract_haiku.rb ${i}
+  cp snippet.txt qwert.txt
   sed  '/^Received\ on/,$d' snippet.txt > qwert.txt
   sed  '/^Paul\ David\ Mena/,$d' snippet.txt > qwert.txt
   ./insert_haiku_from_file_into_table_2012.rb qwert.txt
