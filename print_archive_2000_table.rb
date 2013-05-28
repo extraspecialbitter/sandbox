@@ -5,7 +5,7 @@ require 'mysql'
 begin
     con = Mysql.new 'localhost', 'root', 'menagerie', 'haiku_archive'
 
-    rs = con.query("SELECT * FROM archive_2001")
+    rs = con.query("SELECT * FROM archive_2000")
     n_rows = rs.num_rows
     
     n_rows.times do
