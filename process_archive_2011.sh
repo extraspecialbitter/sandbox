@@ -2,7 +2,7 @@
 
 rm -f ./archive_2011.html
 ./drop_table_2011.rb
-for i in `ls -1 /export/haiku_search/archive_2011/[01]???.html`
+for i in `ls -1 /export/haiku_search/archive_2011/[0-9]???.html`
 do
   ./extract_haiku_2011.rb ${i}
   sed  '/^Received\ on/,$d' snippet.txt > qwert.txt

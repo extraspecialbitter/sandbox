@@ -2,7 +2,7 @@
 
 rm -f ./archive_2003.html
 ./drop_table_2003.rb
-for i in `ls -1 /export/haiku_search/archive_2003/[01]???.html`
+for i in `ls -1 /export/haiku_search/archive_2003/[0-9]???.html`
 do
   ./extract_haiku.rb ${i}
   cp snippet.txt qwert.txt
