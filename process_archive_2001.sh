@@ -1,4 +1,4 @@
-bin/bash
+#!/bin/bash
 
 rm -f ./archive_2001.html
 ./drop_table_2001.rb
