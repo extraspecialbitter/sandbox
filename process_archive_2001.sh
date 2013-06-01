@@ -8,6 +8,8 @@ do
   cp snippet.txt qwert.txt
   sed  '/^Received\ on/,$d' snippet.txt > qwert.txt
   sed  '/^Paul\ David\ Mena/,$d' qwert.txt > snippet.txt
+  sed  '/-Paul/,$d' snippet.txt > qwert.txt
+  sed  '/- Paul/,$d' qwert.txt > snippet.txt
   sed  '/^========================/,$d' snippet.txt > qwert.txt
   sed  '/^------------------------/,$d' qwert.txt > snippet.txt 
   sed  '/^________________________/,$d' snippet.txt > qwert.txt
