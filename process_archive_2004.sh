@@ -16,3 +16,4 @@ do
   ./insert_haiku_from_file_into_table_2004.rb qwert.txt
 done
 ./haiku_to_html_2004.rb
+rm -rf snippet.txt qwert.txt
