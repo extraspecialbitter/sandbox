@@ -45,7 +45,7 @@ rescue
 end
 
 puts " "
-puts "Forecast (As of " + forecast['txt_forecast'][0]['date'][0] + "):"
+# puts "Forecast (As of " + forecast['txt_forecast'][0]['date'][0] + "):"
 (0..7).each do |i|
     puts "       " + forecast['txt_forecast'][0]['forecastdays'][0]['forecastday'][i]['title'][0] + ": " + forecast['txt_forecast'][0]['forecastdays'][0]['forecastday'][i]['fcttext'][0]
 end
