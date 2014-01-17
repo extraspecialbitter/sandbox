@@ -1,15 +1,16 @@
 #!/bin/bash
 
-export search_text=`date +%Y%m%d`
+date_string=`date +%Y%m%d`
+search_text=`expr ${date_string} - 1`
 
 rm -f matches.txt
 rm -f results.txt
 
-./search_for_recent_baselines.rb 20140115
+./search_for_recent_baselines.rb ${search_text}
 
 for i in `cat results.txt | cut -d',' -f1 | cut -d'"' -f2 | sort -u`
 do 
-  grep $i results.txt | grep 20140115 >> matches.txt
+  grep $i results.txt | grep ${search_text} >> matches.txt
 done
 
 # sort -u matches.txt | wc -l
