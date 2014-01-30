@@ -2,6 +2,7 @@
 
 date_string=`date +%Y%m%d`
 search_text=`expr ${date_string} - 1`
+# search_text=`date +%Y%m%d`
 
 rm -f matches.txt
 rm -f results.txt
