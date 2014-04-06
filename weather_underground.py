@@ -17,10 +17,10 @@ except ImportError:
 
 RSS_FEED_URL = 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/MA/Wayland.xml'
 
-if RSS_FEED_URL == '' then
-    puts 'Edit the script to specify'
-    puts 'your RSS feed URL from'
-    puts 'http://api.wunderground.com'
+if RSS_FEED_URL == '':
+    print 'Edit the script to specify'
+    print 'your RSS feed URL from'
+    print 'http://api.wunderground.com'
     exit
 end
 
