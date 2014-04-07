@@ -5,17 +5,21 @@
 import urllib
 from xml.etree.cElementTree import parse
 from datetime import datetime, timedelta
+import commands, os, socket, subprocess
+import time
+import getopt
+import sys 
+from sys import argv
 import os
 from os.path import join
-from sys import argv
 try:
     import cPickle as pickle
 except ImportError:
     import pickle
 
-if len(argv) > 1:
+if len(argv) > 2:
     print "Usage:"
-    print "%s [ mx | tx | up ]" %sys.argv[0]
+    print "%s [ mx | tx | up ]" % sys.argv[0]
     print "\n"
     sys.exit(1)
 
@@ -32,7 +36,7 @@ rss = parse(urllib.urlopen(RSS_FEED_URL)).getroot()
 current_observation = []
 
 print "Weather  + %s" % current_observation['observation_time']
-print "    Currently: " + current_observation['weather'] + ", " + current_observation['temp_f'] + " F"
+# print "    Currently: " + current_observation['weather'] + ", " + current_observation['temp_f'] + " F"
 # puts "     Humidity: " + current_observation['relative_humidity'][0] 
 # puts "         Wind: " + current_observation['wind_mph'][0] + " mph"
 # puts "    Barometer: " + current_observation['pressure_in'][0] + " in"
