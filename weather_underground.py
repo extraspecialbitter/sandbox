@@ -13,45 +13,34 @@ try:
 except ImportError:
     import pickle
 
-#Usage: weather_underground.py 
+if len(argv) > 1:
+    print "Usage:"
+    print "%s [ mx | tx | up ]" %sys.argv[0]
+    print "\n"
+    sys.exit(1)
 
 RSS_FEED_URL = 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/MA/Wayland.xml'
 
 if RSS_FEED_URL == '':
-    print 'Edit the script to specify'
-    print 'your RSS feed URL from'
-    print 'http://api.wunderground.com'
-    exit
-end
+    print "Edit the script to specify"
+    print "your RSS feed URL from"
+    print "http://api.wunderground.com"
+    print "\n"
+    sys.exit(1)
 
-rss = parse(urllib.urlopen(url)).getroot()
+rss = parse(urllib.urlopen(RSS_FEED_URL)).getroot()
+current_observation = []
 
-begin
-    xml = XmlSimple.xml_in(text)
-    current_observation = xml['current_observation'][0]
-rescue
-    puts "Error: Could not parse the XML!"
-    exit
-end
-
-puts "Weather (" + current_observation['observation_time'][0].sub(/..., \d\d ... \d\d\d\d /,'') + '):'
-puts "    Currently: " + current_observation['weather'][0] + ", " + current_observation['temp_f'][0] + " F"
-puts "     Humidity: " + current_observation['relative_humidity'][0] 
-puts "         Wind: " + current_observation['wind_mph'][0] + " mph"
-puts "    Barometer: " + current_observation['pressure_in'][0] + " in"
+print "Weather  + %s" % current_observation['observation_time']
+print "    Currently: " + current_observation['weather'] + ", " + current_observation['temp_f'] + " F"
+# puts "     Humidity: " + current_observation['relative_humidity'][0] 
+# puts "         Wind: " + current_observation['wind_mph'][0] + " mph"
+# puts "    Barometer: " + current_observation['pressure_in'][0] + " in"
 # puts "      Sunrise: " + current_observation['astronomy'][0]['sunrise']
 # puts "       Sunset: " + current_observation['astronomy'][0]['sunset']
 
-begin
-    xml = XmlSimple.xml_in(text)
-    forecast = xml['forecast'][0]
-rescue
-    puts "Error: Could not parse the XML!"
-    exit
-end
-
-puts " "
+# puts " "
 # puts "Forecast (As of " + forecast['txt_forecast'][0]['date'][0] + "):"
-(0..7).each do |i|
-    puts "       " + forecast['txt_forecast'][0]['forecastdays'][0]['forecastday'][i]['title'][0] + ": " + forecast['txt_forecast'][0]['forecastdays'][0]['forecastday'][i]['fcttext'][0]
-end
+# (0..7).each do |i|
+#     puts "       " + forecast['txt_forecast'][0]['forecastdays'][0]['forecastday'][i]['title'][0] + ": " + forecast['txt_forecast'][0]['forecastdays'][0]['forecastday'][i]['fcttext'][0]
+# end
