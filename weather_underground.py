@@ -33,7 +33,10 @@ if RSS_FEED_URL == '':
     sys.exit(1)
 
 rss = parse(urllib.urlopen(RSS_FEED_URL)).getroot()
-current_observation = []
+forecasts = []
+for element in rss.findall('current_observation/item/{%s}forecast':
+    forecasts.append(dict(element.items()))
+
 
 print "Weather  + %s" % current_observation['observation_time']
 # print "    Currently: " + current_observation['weather'] + ", " + current_observation['temp_f'] + " F"
