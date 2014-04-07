@@ -2,16 +2,17 @@
 
 # This script fetches the weather from the WeatherUnderground RSS feed and prints it out.
 
-import urllib
 from xml.etree.cElementTree import parse
 from datetime import datetime, timedelta
+from BeautifulSoup import BeautifulStoneSoup
+from sys import argv
+from os.path import join
+import urllib
 import commands, os, socket, subprocess
 import time
 import getopt
 import sys 
-from sys import argv
 import os
-from os.path import join
 try:
     import cPickle as pickle
 except ImportError:
@@ -33,12 +34,12 @@ if RSS_FEED_URL == '':
     sys.exit(1)
 
 rss = parse(urllib.urlopen(RSS_FEED_URL)).getroot()
+soup = BeautifulStoneSoup(rss)
 forecasts = []
-for element in rss.findall('current_observation/item/{%s}forecast':
-    forecasts.append(dict(element.items()))
+# for element in rss.findall('current_observation/item/{%s}forecast':
+#   forecasts.append(dict(element.items()))
 
-
-print "Weather  + %s" % current_observation['observation_time']
+# print "Weather  + %s" % current_observation['observation_time']
 # print "    Currently: " + current_observation['weather'] + ", " + current_observation['temp_f'] + " F"
 # puts "     Humidity: " + current_observation['relative_humidity'][0] 
 # puts "         Wind: " + current_observation['wind_mph'][0] + " mph"
