@@ -24,12 +24,7 @@ if RSS_FEED_URL == '':
     exit
 end
 
-begin
-    text = Net::HTTP.get(URI.parse(RSS_FEED_URL))
-rescue
-    puts "ERROR: Failed fetching RSS feed!"
-    exit
-end
+rss = parse(urllib.urlopen(url)).getroot()
 
 begin
     xml = XmlSimple.xml_in(text)

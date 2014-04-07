@@ -5,7 +5,7 @@ require 'mysql'
 begin
     con = Mysql.new 'p2-sif-utilsql01.ad.prodcc.net', 'ctctopsread', 'gr8Dane', 'ctctops'
 
-    rs = con.query("SELECT DISTINCT app_name, rpm_version, env FROM apps_servers_mapping a, apps b, environment WHERE a.app_id=b.app_id AND rpm_version IS NOT NULL AND app_type='JBOSS' AND env='p2-s1' ORDER BY app_name")
+    rs = con.query("SELECT DISTINCT hardware_name, svr_group FROM hardware WHERE hardware_name LIKE 'p2-jbsynload%'")
     n_rows = rs.num_rows
 #   puts n_rows    
 
