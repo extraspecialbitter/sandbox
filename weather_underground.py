@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 from BeautifulSoup import BeautifulStoneSoup
 from sys import argv
 from os.path import join
-import urllib
+import urllib2
 import commands, os, socket, subprocess
 import time
 import getopt
@@ -33,8 +33,10 @@ if RSS_FEED_URL == '':
     print "\n"
     sys.exit(1)
 
-rss = parse(urllib.urlopen(RSS_FEED_URL)).getroot()
-soup = BeautifulStoneSoup(rss)
+rss = urllib2.urlopen(RSS_FEED_URL)
+rss_string = rss.read()
+# print "%s" % rss_string
+# soup = BeautifulStoneSoup(RSS_FEED_URL)
 forecasts = []
 # for element in rss.findall('current_observation/item/{%s}forecast':
 #   forecasts.append(dict(element.items()))
