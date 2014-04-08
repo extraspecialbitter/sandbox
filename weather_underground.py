@@ -33,25 +33,25 @@ if RSS_FEED_URL == '':
 f = urllib2.urlopen(RSS_FEED_URL)
 json_string = f.read()
 parsed_json = json.loads(json_string)
-location = parsed_json['location']['city']
-temp_f = parsed_json['current_observation']['temp_f']
-print "Current temperature in %s is: %s" % (location, temp_f)
-f.close()
-# rss_string = rss.read()
-# print "%s" % rss_string
-# soup = BeautifulStoneSoup(rss_string)
-# print "%s" % soup
-# forecasts = []
-# for element in rss.findall('current_observation/item/{%s}forecast':
-#   forecasts.append(dict(element.items()))
 
-# print "Weather  + %s" % current_observation['observation_time']
-# print "    Currently: " + current_observation['weather'] + ", " + current_observation['temp_f'] + " F"
-# puts "     Humidity: " + current_observation['relative_humidity'][0] 
-# puts "         Wind: " + current_observation['wind_mph'][0] + " mph"
-# puts "    Barometer: " + current_observation['pressure_in'][0] + " in"
-# puts "      Sunrise: " + current_observation['astronomy'][0]['sunrise']
-# puts "       Sunset: " + current_observation['astronomy'][0]['sunset']
+# start parsing for individual fields
+
+location = parsed_json['location']['city']
+c_time = parsed_json['current_observation']['observation_time']
+weather = parsed_json['current_observation']['weather']
+temp_f = parsed_json['current_observation']['temp_f']
+wind_mph = parsed_json['current_observation']['wind_mph']
+humidity = parsed_json['current_observation']['relative_humidity']
+
+# and print
+
+print "\n"
+print "Weather in %s (%s)\n" % (location, c_time)
+print "Currently: %s, %s" % (weather, temp_f)
+print "Wind: %s mph" % (wind_mph)
+print "Humidity: %s" % (humidity)
+print "\n"
+f.close()
 
 # puts " "
 # puts "Forecast (As of " + forecast['txt_forecast'][0]['date'][0] + "):"
