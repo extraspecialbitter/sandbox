@@ -2,9 +2,7 @@
 
 # This script fetches the weather from the WeatherUnderground RSS feed and prints it out.
 
-from xml.etree.cElementTree import parse
 from datetime import datetime, timedelta
-from BeautifulSoup import BeautifulStoneSoup
 from sys import argv
 from os.path import join
 import urllib2
@@ -13,10 +11,7 @@ import time
 import getopt
 import sys 
 import os
-try:
-    import cPickle as pickle
-except ImportError:
-    import pickle
+import json
 
 if len(argv) > 2:
     print "Usage:"
@@ -24,7 +19,7 @@ if len(argv) > 2:
     print "\n"
     sys.exit(1)
 
-RSS_FEED_URL = 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/MA/Wayland.xml'
+RSS_FEED_URL = 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/MA/Wayland.json'
 
 if RSS_FEED_URL == '':
     print "Edit the script to specify"
@@ -33,14 +28,20 @@ if RSS_FEED_URL == '':
     print "\n"
     sys.exit(1)
 
-# read in the XML data
+# read in the JSON data
 
-rss = urllib2.urlopen(RSS_FEED_URL)
-rss_string = rss.read()
+f = urllib2.urlopen(RSS_FEED_URL)
+json_string = f.read()
+parsed_json = json.loads(json_string)
+location = parsed_json['location']['city']
+temp_f = parsed_json['current_observation']['temp_f']
+print "Current temperature in %s is: %s" % (location, temp_f)
+f.close()
+# rss_string = rss.read()
 # print "%s" % rss_string
-soup = BeautifulStoneSoup(rss_string)
-print "%s" % soup
-forecasts = []
+# soup = BeautifulStoneSoup(rss_string)
+# print "%s" % soup
+# forecasts = []
 # for element in rss.findall('current_observation/item/{%s}forecast':
 #   forecasts.append(dict(element.items()))
 
