@@ -38,7 +38,8 @@ if RSS_FEED_URL == '':
 rss = urllib2.urlopen(RSS_FEED_URL)
 rss_string = rss.read()
 # print "%s" % rss_string
-# soup = BeautifulStoneSoup(RSS_FEED_URL)
+soup = BeautifulStoneSoup(rss_string)
+print "%s" % soup
 forecasts = []
 # for element in rss.findall('current_observation/item/{%s}forecast':
 #   forecasts.append(dict(element.items()))
