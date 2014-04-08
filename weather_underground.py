@@ -33,6 +33,8 @@ if RSS_FEED_URL == '':
     print "\n"
     sys.exit(1)
 
+# read in the XML data
+
 rss = urllib2.urlopen(RSS_FEED_URL)
 rss_string = rss.read()
 # print "%s" % rss_string
