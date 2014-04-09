@@ -14,8 +14,8 @@ import os
 import json
 
 if len(argv) > 2:
-    print "Usage:"
-    print "%s [ mx | tx | up ]" % sys.argv[0]
+    print "\nUsage:"
+    print "%s [ mx | tx | up | az ]" % sys.argv[0]
     print "\n"
     sys.exit(1)
 
@@ -47,8 +47,7 @@ humidity = parsed_json['current_observation']['relative_humidity']
 
 # and print
 
-print "\n"
-print "Weather in %s (%s)\n" % (location, c_time)
+print "\nWeather in %s (%s)\n" % (location, c_time)
 print "Currently: %s, %s" % (weather, temp_f)
 print "Wind: %s mph" % (wind_mph)
 print "Humidity: %s\n" % (humidity)
