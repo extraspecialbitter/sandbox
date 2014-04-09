@@ -13,20 +13,26 @@ import sys
 import os
 import json
 
-if len(argv) > 2:
+# parse arguments
+
+if len(sys.argv) > 2:
     print "\nUsage:"
     print "%s [ mx | tx | up | az ]" % sys.argv[0]
     print "\n"
-    sys.exit(1)
-
-RSS_FEED_URL = 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/MA/Wayland.json'
-
-if RSS_FEED_URL == '':
-    print "Edit the script to specify"
-    print "your RSS feed URL from"
-    print "http://api.wunderground.com"
-    print "\n"
-    sys.exit(1)
+elif len(sys.argv) == 2:
+    if sys.argv[1] == "tx":
+        RSS_FEED_URL = 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/TX/Austin.json'
+    elif sys.argv[1] == "mx":
+        RSS_FEED_URL = 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/zmw:00000.1.WMMSD.json'
+    elif sys.argv[1] == "up":
+        RSS_FEED_URL = 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/MI/Munising.json'
+    elif sys.argv[1] == "az":
+        RSS_FEED_URL = 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/AZ/Phoenix.json'
+    else:
+        print "\nWe haven't implemented that option yet\n" 
+        sys.exit(1)
+else:
+    RSS_FEED_URL = 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/MA/Wayland.json'
 
 # read in the JSON data
 
