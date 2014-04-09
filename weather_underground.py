@@ -53,11 +53,11 @@ forecast_array = parsed_json['forecast']['txt_forecast']['forecastday']
 
 # and print
 
-print "\nWeather in %s (%s)\n" % (location, c_time)
-print "Currently: %s, %s" % (weather, temp_f)
-print "Wind: %s mph" % (wind_mph)
-print "Humidity: %s\n" % (humidity)
-print "Forecast:\n"
+print "\nWeather in %s (%s)" % (location, c_time)
+print "    Currently: %s, %s" % (weather, temp_f)
+print "         Wind: %s mph" % (wind_mph)
+print "     Humidity: %s\n" % (humidity)
+print "Forecast:"
 # print "Date: %s" % (forecast_date)
 # print "Debug: %s" % (forecast_array)
 
@@ -66,7 +66,7 @@ print "Forecast:\n"
 for i in range(0, 8):
     forecast_title = parsed_json['forecast']['txt_forecast']['forecastday'][i]['title']
     forecast_data  = parsed_json['forecast']['txt_forecast']['forecastday'][i]['fcttext']
-    print "%s: %s" % (forecast_title, forecast_data)
+    print "    %s: %s" % (forecast_title, forecast_data)
 print "\n"
 f.close()
 
