@@ -34,7 +34,7 @@ f = urllib2.urlopen(RSS_FEED_URL)
 json_string = f.read()
 parsed_json = json.loads(json_string)
 
-# start parsing for individual fields
+# start parsing current weather
 
 location = parsed_json['location']['city']
 c_time = parsed_json['current_observation']['observation_time']
@@ -44,8 +44,6 @@ wind_mph = parsed_json['current_observation']['wind_mph']
 humidity = parsed_json['current_observation']['relative_humidity']
 forecast_date = parsed_json['forecast']['txt_forecast']['date']
 forecast_array = parsed_json['forecast']['txt_forecast']['forecastday']
-forecast_title = parsed_json['forecast']['txt_forecast']['forecastday'][0]['title']
-forecast_data  = parsed_json['forecast']['txt_forecast']['forecastday'][0]['fcttext']
 
 # and print
 
@@ -56,7 +54,13 @@ print "Humidity: %s\n" % (humidity)
 print "Forecast:\n"
 # print "Date: %s" % (forecast_date)
 # print "Debug: %s" % (forecast_array)
-print "%s: %s" % (forecast_title, forecast_data)
+
+# parse and print the forecast
+
+for i in range(0, 8):
+    forecast_title = parsed_json['forecast']['txt_forecast']['forecastday'][i]['title']
+    forecast_data  = parsed_json['forecast']['txt_forecast']['forecastday'][i]['fcttext']
+    print "%s: %s" % (forecast_title, forecast_data)
 print "\n"
 f.close()
 
