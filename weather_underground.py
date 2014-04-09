@@ -44,7 +44,8 @@ wind_mph = parsed_json['current_observation']['wind_mph']
 humidity = parsed_json['current_observation']['relative_humidity']
 forecast_date = parsed_json['forecast']['txt_forecast']['date']
 forecast_array = parsed_json['forecast']['txt_forecast']['forecastday']
-# forecast_data = parsed_json['forecast']['fcttext']
+forecast_title = parsed_json['forecast']['txt_forecast']['forecastday'][0]['title']
+forecast_data  = parsed_json['forecast']['txt_forecast']['forecastday'][0]['fcttext']
 
 # and print
 
@@ -53,9 +54,9 @@ print "Currently: %s, %s" % (weather, temp_f)
 print "Wind: %s mph" % (wind_mph)
 print "Humidity: %s\n" % (humidity)
 print "Forecast:\n"
-print "Date: %s" % (forecast_date)
-print "Debug: %s" % (forecast_array)
-# print "%s: %s" (forecast_title, forecast_data)
+# print "Date: %s" % (forecast_date)
+# print "Debug: %s" % (forecast_array)
+print "%s: %s" % (forecast_title, forecast_data)
 print "\n"
 f.close()
 
