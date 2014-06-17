@@ -21,19 +21,30 @@ if len(sys.argv) > 2:
     print "\n"
     sys.exit(1)
 elif len(sys.argv) == 2:
-    if sys.argv[1] == "tx":
-        RSS_FEED_URL = 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/TX/Austin.json'
-    elif sys.argv[1] == "mx":
-        RSS_FEED_URL = 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/zmw:00000.3.WMMSL.json'
-    elif sys.argv[1] == "up":
-        RSS_FEED_URL = 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/MI/Munising.json'
-    elif sys.argv[1] == "az":
-        RSS_FEED_URL = 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/AZ/Phoenix.json'
-    elif sys.argv[1] == "fl":
-        RSS_FEED_URL = 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/zmw:34101.1.99999.json'
-    else:
-        print "\nWe haven't implemented that option yet\n" 
-        sys.exit(1)
+    station = sys.argv[1]
+
+# implementing a case statement using a dictionary 
+    def austin():
+        return 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/TX/Austin.json'
+    def pescadero():
+        return 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/zmw:00000.3.WMMSL.json'
+    def munising():
+        return 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/MI/Munising.json'
+    def phoenix():
+        return 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/AZ/Phoenix.json'
+    def naples():
+        return 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/zmw:34101.1.99999.json'
+    def nowhere():
+        return 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/MA/Wayland.json'
+
+    case_dictionary = {
+        'tx' : austin,
+        'mx' : pescadero,
+        'mi' : munising,
+        'az' : phoenix,
+        'fl' : naples }
+    RSS_FEED_URL = case_dictionary.get(station, nowhere)()
+
 else:
     RSS_FEED_URL = 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/MA/Wayland.json'
 
