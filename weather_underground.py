@@ -17,8 +17,9 @@ import json
 
 if len(sys.argv) > 2:
     print "\nUsage:"
-    print "%s [ mx | tx | up | az ]" % sys.argv[0]
+    print "%s [ mx | tx | up | az | fl ]" % sys.argv[0]
     print "\n"
+    sys.exit(1)
 elif len(sys.argv) == 2:
     if sys.argv[1] == "tx":
         RSS_FEED_URL = 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/TX/Austin.json'
