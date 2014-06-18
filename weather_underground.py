@@ -35,7 +35,7 @@ elif len(sys.argv) == 2:
     def naples():
         return 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/zmw:34101.1.99999.json'
     def nowhere():
-        return 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/MA/Wayland.json'
+        return 'nowhere'
 
     case_dictionary = {
         'tx' : austin,
@@ -47,6 +47,13 @@ elif len(sys.argv) == 2:
 
 else:
     RSS_FEED_URL = 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/MA/Wayland.json'
+
+# error on unimplemented feed
+
+if RSS_FEED_URL == 'nowhere':
+   print "\nThis station feed has not been implemented yet."
+   print "\n"
+   sys.exit(1)
 
 # read in the JSON data
 
@@ -84,8 +91,3 @@ for i in range(0, 8):
 print "\n"
 f.close()
 
-# puts " "
-# puts "Forecast (As of " + forecast['txt_forecast'][0]['date'][0] + "):"
-# (0..7).each do |i|
-#     puts "       " + forecast['txt_forecast'][0]['forecastdays'][0]['forecastday'][i]['title'][0] + ": " + forecast['txt_forecast'][0]['forecastdays'][0]['forecastday'][i]['fcttext'][0]
-# end
