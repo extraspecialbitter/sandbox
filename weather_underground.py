@@ -17,7 +17,7 @@ import json
 
 if len(sys.argv) > 2:
     print "\nUsage:"
-    print "%s [ mx | tx | up | az | fl ]" % sys.argv[0]
+    print "%s [ mx | tx | mi | az | fl ]" % sys.argv[0]
     print "\n"
     sys.exit(1)
 elif len(sys.argv) == 2:
