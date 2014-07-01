@@ -29,7 +29,7 @@ elif len(sys.argv) == 2:
     def pescadero():
         return 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/zmw:00000.3.WMMSL.json'
     def munising():
-        return 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/MI/Munising.json'
+        return 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/zmw:49862.1.99999.json'
     def phoenix():
         return 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/AZ/Phoenix.json'
     def naples():
