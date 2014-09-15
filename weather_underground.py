@@ -26,6 +26,8 @@ elif len(sys.argv) == 2:
 # implementing a case statement using a dictionary 
     def austin():
         return 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/TX/Austin.json'
+    def newyork():
+        return 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/NY/NewYork.json'
     def pescadero():
         return 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/zmw:00000.3.WMMSL.json'
     def munising():
@@ -39,6 +41,7 @@ elif len(sys.argv) == 2:
 
     case_dictionary = {
         'tx' : austin,
+        'ny' : newyork,
         'mx' : pescadero,
         'mi' : munising,
         'az' : phoenix,
