@@ -17,7 +17,7 @@ import json
 
 if len(sys.argv) > 2:
     print "\nUsage:"
-    print "%s [ mx | tx | mi | az | fl ]" % sys.argv[0]
+    print "%s [ mx | tx | mi | az | fl | rb ]" % sys.argv[0]
     print "\n"
     sys.exit(1)
 elif len(sys.argv) == 2:
@@ -36,6 +36,8 @@ elif len(sys.argv) == 2:
         return 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/AZ/Phoenix.json'
     def naples():
         return 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/zmw:34101.1.99999.json'
+    def redondo():
+        return 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/zmw:90277.1.99999.json'
     def nowhere():
         return 'nowhere'
 
@@ -45,6 +47,7 @@ elif len(sys.argv) == 2:
         'mx' : pescadero,
         'mi' : munising,
         'az' : phoenix,
+        'rb' : redondo,
         'fl' : naples }
     RSS_FEED_URL = case_dictionary.get(station, nowhere)()
 
