@@ -24,6 +24,15 @@ elif len(sys.argv) == 2:
     station = sys.argv[1]
 
 # implementing a case statement using a dictionary 
+    wu_forecast = {
+        'tx' : austin,
+        'ny' : newyork,
+        'mx' : pescadero,
+        'mi' : munising,
+        'az' : phoenix,
+        'rb' : redondo,
+        'fl' : naples }
+
     def austin():
         return 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/TX/Austin.json'
     def newyork():
@@ -41,29 +50,21 @@ elif len(sys.argv) == 2:
     def nowhere():
         return 'nowhere'
 
-    case_dictionary = {
-        'tx' : austin,
-        'ny' : newyork,
-        'mx' : pescadero,
-        'mi' : munising,
-        'az' : phoenix,
-        'rb' : redondo,
-        'fl' : naples }
-    RSS_FEED_URL = case_dictionary.get(station, nowhere)()
+    FORECAST_URL = wu_forecast.get(station, nowhere)()
 
 else:
-    RSS_FEED_URL = 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/MA/Wayland.json'
+    FORECAST_URL = 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/MA/Wayland.json'
 
 # error on unimplemented feed
 
-if RSS_FEED_URL == 'nowhere':
+if FORECAST_URL == 'nowhere':
    print "\nThis station feed has not been implemented yet."
    print "\n"
    sys.exit(1)
 
 # read in the JSON data
 
-f = urllib2.urlopen(RSS_FEED_URL)
+f = urllib2.urlopen(FORECAST_URL)
 json_string = f.read()
 parsed_json = json.loads(json_string)
 
