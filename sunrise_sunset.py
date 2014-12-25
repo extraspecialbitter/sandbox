@@ -71,7 +71,7 @@ sunset_minute = parsed_json['sun_phase']['sunset']['minute']
 
 # and print
 
-print "\nMoon phase is %s " % (moon)
+print "\n    Moon phase is %s " % (moon)
 print "    Sunrise: %s:%s" % (sunrise_hour, sunrise_minute)
 print "    Sunset: %s:%s" % (sunset_hour, sunset_minute)
 
