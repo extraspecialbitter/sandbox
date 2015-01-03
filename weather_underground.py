@@ -22,42 +22,37 @@ if len(sys.argv) != 2:
     sys.exit(1)
 elif len(sys.argv) == 2:
     station = sys.argv[1]
+    urlbase = 'http://api.wunderground.com/api/2ad1a5da2e974bd8/'
 
-# implementing a case statement using a dictionary 
-    def austin():
-        return 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/TX/Austin.json'
-    def pescadero():
-        return 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/zmw:00000.3.WMMSL.json'
-    def munising():
-        return 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/MI/Munising.json'
-    def phoenix():
-        return 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/AZ/Phoenix.json'
-    def naples():
-        return 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/zmw:34101.1.99999.json'
-    def nowhere():
-        return 'nowhere'
-
-    case_dictionary = {
-        'tx' : austin,
-        'mx' : pescadero,
-        'mi' : munising,
-        'az' : phoenix,
-        'fl' : naples }
-    RSS_FEED_URL = case_dictionary.get(station, nowhere)()
-
-else:
-    RSS_FEED_URL = 'http://api.wunderground.com/api/2ad1a5da2e974bd8/geolookup/conditions/forecast/q/MA/Wayland.json'
-
-# error on unimplemented feed
-
-if RSS_FEED_URL == 'nowhere':
-   print "\nThis station feed has not been implemented yet."
-   print "\n"
-   sys.exit(1)
+    if station == 'tx':
+        url_forecast = urlbase + 'geolookup/conditions/forecast/q/TX/Austin.json'
+        url_sunrise  = urlbase + 'astronomy/q/TX/Austin.json'
+    elif station == 'mx':
+        url_forecast = urlbase + 'geolookup/conditions/forecast/q/zmw:00000.3.WMMSL.json'
+        url_sunrise  = urlbase + 'astronomy/q/zmw:00000.3.WMMSL.json'
+    elif station == 'mi':
+        url_forecast = urlbase + 'geolookup/conditions/forecast/q/MI/Munising.json'
+        url_sunrise  = urlbase + 'astronomy/q/MI/Munising.json'
+    elif station == 'az':
+        url_forecast = urlbase + 'geolookup/conditions/forecast/q/AZ/Phoenix.json'
+        url_sunrise  = urlbase + 'astronomy/q/AZ/Phoenix.json'
+    elif station == 'fl':
+        url_forecast = urlbase + 'geolookup/conditions/forecast/q/zmw:34101.1.99999.json'
+        url_sunrise  = urlbase + 'astronomy/q/zmw:34101.1.99999.json'
+    elif station == 'way':
+        url_forecast = urlbase + 'geolookup/conditions/forecast/q/MA/Wayland.json'
+        url_sunrise  = urlbase + 'astronomy/q/MA/Wayland.json'
+    elif station == 'rb':
+        url_forecast = urlbase + 'geolookup/conditions/forecast/q/zmw:90277.1.99999'
+        url_sunrise  = urlbase + 'astronomy/q/zmw:90277.1.99999'
+    else:
+        print "\nThis station feed has not been implemented yet."
+        print "\n"
+        sys.exit(1)
 
 # read in the JSON data
 
-f = urllib2.urlopen(RSS_FEED_URL)
+f = urllib2.urlopen(url_forecast)
 json_string = f.read()
 parsed_json = json.loads(json_string)
 
