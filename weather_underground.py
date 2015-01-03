@@ -43,14 +43,14 @@ elif len(sys.argv) == 2:
         url_forecast = urlbase + 'geolookup/conditions/forecast/q/MA/Wayland.json'
         url_sunrise  = urlbase + 'astronomy/q/MA/Wayland.json'
     elif station == 'rb':
-        url_forecast = urlbase + 'geolookup/conditions/forecast/q/zmw:90277.1.99999'
-        url_sunrise  = urlbase + 'astronomy/q/zmw:90277.1.99999'
+        url_forecast = urlbase + 'geolookup/conditions/forecast/q/zmw:90277.1.99999.json'
+        url_sunrise  = urlbase + 'astronomy/q/zmw:90277.1.99999.json'
     else:
         print "\nThis station feed has not been implemented yet."
         print "\n"
         sys.exit(1)
 
-# read in the JSON data
+# read in the JSON forecast data
 
 f = urllib2.urlopen(url_forecast)
 json_string = f.read()
@@ -85,4 +85,27 @@ for i in range(0, 8):
     print "    %s: %s" % (forecast_title, forecast_data)
 print "\n"
 f.close()
+
+# read in the JSON astronomical data
+
+g = urllib2.urlopen(url_sunrise)
+json_string = g.read()
+parsed_json = json.loads(json_string)
+
+# start parsing astronomy data
+
+moon = parsed_json['moon_phase']['phaseofMoon']
+sunrise_hour = parsed_json['sun_phase']['sunrise']['hour']
+sunrise_minute = parsed_json['sun_phase']['sunrise']['minute']
+sunset_hour = parsed_json['sun_phase']['sunset']['hour']
+sunset_minute = parsed_json['sun_phase']['sunset']['minute']
+
+# print sunrise, sunset and moon phase
+
+print "    Sunrise: %s:%s" % (sunrise_hour, sunrise_minute)
+print "    Sunset: %s:%s" % (sunset_hour, sunset_minute)
+print "\n    Moon phase is %s " % (moon)
+
+print "\n"
+g.close()
 
