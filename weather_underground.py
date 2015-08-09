@@ -17,7 +17,7 @@ import json
 
 if len(sys.argv) != 2:
     print "\nUsage:"
-    print "%s [ mx | tx | mi | az | fl | way | rb | nyc ]" % sys.argv[0]
+    print "%s [ mx | tx | mi | az | fl | way | rb | nyc | ca ]" % sys.argv[0]
     print "\n"
     sys.exit(1)
 elif len(sys.argv) == 2:
@@ -48,6 +48,9 @@ elif len(sys.argv) == 2:
     elif station == 'nyc':
         url_forecast = urlbase + 'geolookup/conditions/forecast/q/NY/NewYork.json'
         url_sunrise  = urlbase + 'astronomy/q/NY/NewYork.json'
+    elif station == 'ca':
+        url_forecast = urlbase + 'geolookup/conditions/forecast/q/pws:KCACAMBR16.json'
+        url_sunrise  = urlbase + 'astronomy/q/pws:KCACAMBR16.json'
     else:
         print "\nThis station feed has not been implemented yet."
         print "\n"
