@@ -66,10 +66,10 @@ forecast_array = parsed_json['forecast']['txt_forecast']['forecastday']
 
 # and print
 
-print "\nWeather in %s" % (location)
+print "\n          Weather in %s" % (location)
 print "    Currently: %s, %s" % (weather, temp_f)
-print "         Wind: %s mph" % (wind_mph)
-print "     Humidity: %s\n" % (humidity)
+print "               Wind: %s mph" % (wind_mph)
+print "               Humidity: %s\n" % (humidity)
 
 print "\n"
 
