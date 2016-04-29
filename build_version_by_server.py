@@ -3,14 +3,10 @@
 # This script fetches an application build version from its JSON healthcheck
 
 from sys import argv
-from os.path import join
 import urllib2
-import commands, os, socket, subprocess
-import time
 import getopt
-import sys 
-import os
 import json
+import sys
 
 # construct healthcheck URL
 
