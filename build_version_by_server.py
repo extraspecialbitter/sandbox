@@ -4,7 +4,6 @@
 
 from sys import argv
 import urllib2
-import getopt
 import json
 import sys
 
