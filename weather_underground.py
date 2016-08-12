@@ -17,7 +17,7 @@ import json
 
 if len(sys.argv) != 2:
     print "\nUsage:"
-    print "%s [ mx | tx | mi | az | fl | way | rb | nyc | ca ]" % sys.argv[0]
+    print "%s [ mx | tx | mi | rnc | wnc | fl | way | rb | nyc | ca ]" % sys.argv[0]
     print "\n"
     sys.exit(1)
 elif len(sys.argv) == 2:
@@ -33,9 +33,12 @@ elif len(sys.argv) == 2:
     elif station == 'mi':
         url_forecast = urlbase + 'geolookup/conditions/forecast/q/MI/Munising.json'
         url_sunrise  = urlbase + 'astronomy/q/MI/Munising.json'
-    elif station == 'az':
-        url_forecast = urlbase + 'geolookup/conditions/forecast/q/AZ/Phoenix.json'
-        url_sunrise  = urlbase + 'astronomy/q/AZ/Phoenix.json'
+    elif station == 'rnc':
+        url_forecast = urlbase + 'geolookup/conditions/forecast/q/zmw:27601.1.99999.json'
+        url_sunrise  = urlbase + 'astronomy/q/zmw:27601.1.99999.json'
+    elif station == 'wnc':
+        url_forecast = urlbase + 'geolookup/conditions/forecast/q/zmw:28401.1.99999.json'
+        url_sunrise  = urlbase + 'astronomy/q/zmw:28401.1.99999.json'
     elif station == 'fl':
         url_forecast = urlbase + 'geolookup/conditions/forecast/q/zmw:34101.1.99999.json'
         url_sunrise  = urlbase + 'astronomy/q/zmw:34101.1.99999.json'
