@@ -43,8 +43,8 @@ elif len(sys.argv) == 2:
         url_forecast = urlbase + 'geolookup/conditions/forecast/q/zmw:34101.1.99999.json'
         url_sunrise  = urlbase + 'astronomy/q/zmw:34101.1.99999.json'
     elif station == 'way':
-        url_forecast = urlbase + 'geolookup/conditions/forecast/q/MA/Wayland.json'
-        url_sunrise  = urlbase + 'astronomy/q/MA/Wayland.json'
+        url_forecast = urlbase + 'geolookup/conditions/forecast/q/pws:KMAWAYLA13.json'
+        url_sunrise  = urlbase + 'astronomy/q/pws:KMAWAYLA13.json'
     elif station == 'cc':
         url_forecast = urlbase + 'geolookup/conditions/forecast/q/zmw:02632.1.99999.json'
         url_sunrise  = urlbase + 'astronomy/q/zmw:02632.1.99999.json'
