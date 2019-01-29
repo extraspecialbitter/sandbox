@@ -17,7 +17,7 @@ import json
 
 if len(sys.argv) != 2:
     print "\nUsage:"
-    print "%s [ mx | tx | mi | lv | fl | way | cc | rb | nyc | ca ]" % sys.argv[0]
+    print "%s [ mx | tx | mi | fl | way | cc | rb | nyc | ca ]" % sys.argv[0]
     print "\n"
     sys.exit(1)
 elif len(sys.argv) == 2:
@@ -36,9 +36,6 @@ elif len(sys.argv) == 2:
     elif station == 'fl':
         url_forecast = urlbase + 'geolookup/conditions/forecast/q/zmw:34101.1.99999.json'
         url_sunrise  = urlbase + 'astronomy/q/zmw:34101.1.99999.json'
-    elif station == 'lv':
-        url_forecast = urlbase + 'geolookup/conditions/forecast/q/pws:KNVLASVE134.json'
-        url_sunrise  = urlbase + 'astronomy/q/pws:KNVLASVE134.json'
     elif station == 'way':
         url_forecast = urlbase + 'geolookup/conditions/forecast/q/pws:KMAWAYLA13.json'
         url_sunrise  = urlbase + 'astronomy/q/pws:KMAWAYLA13.json'
