@@ -25,6 +25,7 @@ my_powerball = my_raw_numbers[5]
 f = urllib2.urlopen(pburl)
 json_string = f.read()
 parsed_json = json.loads(json_string)
+f.close()
 
 # parse latest numbers
 
@@ -46,5 +47,13 @@ print "Multiplier:                %s" % (multiplier)
 print "\nMy Numbers          :      %s" % (my_numbers)
 print "My Power Ball Number:      %s" % (my_powerball)
 print "\n"
-f.close()
 
+# but do they match?
+
+for i in winning_numbers:
+    for j in my_numbers:
+	if i == j:
+           print "%s is a match" % (i)
+	else:
+           print "Sorry - No matches"
+           break
