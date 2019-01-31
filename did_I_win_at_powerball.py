@@ -12,6 +12,7 @@ import getopt
 import sys 
 import os
 import json
+import csv
 
 pburl = 'https://www.powerball.com/api/v1/numbers/powerball/recent10?_format=json'
 
@@ -26,20 +27,22 @@ parsed_json = json.loads(json_string)
 
 # parse latest numbers
 
-winning_numbers = parsed_json[0]["field_winning_numbers"]
-winning_powerball_number = winning_numbers[15:17]
+raw_winning_numbers = parsed_json[0]["field_winning_numbers"]
+winning_array = raw_winning_numbers.split(",")
+winning_numbers = winning_array[0:4]
+winning_powerball_number = winning_array[5]
 multiplier = parsed_json[0]["field_multiplier"]
 draw_date = parsed_json[0]["field_draw_date"]
 
 # and print
 
-print "\nDraw Date:       %s" % (draw_date)
-print "Winning Numbers: %s" % (winning_numbers)
-print "Multiplier:      %s" % (multiplier)
+print "\nDraw Date:                 %s" % (draw_date)
+print "Winning Numbers:           %s" % (winning_numbers)
+print "Winning Power Ball Number: %s" % (winning_powerball_number)
+print "Multiplier:                %s" % (multiplier)
 
 print "\nMy Numbers          :      %s" % (my_numbers)
-print "\nMy Power Ball Number:      %s" % (my_powerball)
-print "\nWinning Power Ball Number: %s" % (winning_powerball_number)
+print "My Power Ball Number:      %s" % (my_powerball)
 print "\n"
 f.close()
 
