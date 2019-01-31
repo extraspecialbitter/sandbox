@@ -16,9 +16,9 @@ import csv
 
 pburl = 'https://www.powerball.com/api/v1/numbers/powerball/recent10?_format=json'
 
-raw_numbers = [1, 8, 16, 28, 44, 8]
-my_numbers = raw_numbers[0:5]
-my_powerball = raw_numbers[5]
+my_raw_numbers = [1, 8, 16, 28, 44, 8]
+my_numbers = my_raw_numbers[0:5]
+my_powerball = my_raw_numbers[5]
 
 # read in the JSON data
 
@@ -29,6 +29,7 @@ parsed_json = json.loads(json_string)
 # parse latest numbers
 
 raw_winning_numbers = parsed_json[0]["field_winning_numbers"]
+winning_printable = raw_winning_numbers[0:14]
 winning_array = raw_winning_numbers.split(",")
 winning_numbers = winning_array[0:4]
 winning_powerball_number = winning_array[5]
@@ -38,7 +39,7 @@ draw_date = parsed_json[0]["field_draw_date"]
 # and print
 
 print "\nDraw Date:                 %s" % (draw_date)
-print "Winning Numbers:           %s" % (winning_numbers)
+print "Winning Numbers:           %s" % (winning_printable)
 print "Winning Power Ball Number: %s" % (winning_powerball_number)
 print "Multiplier:                %s" % (multiplier)
 
