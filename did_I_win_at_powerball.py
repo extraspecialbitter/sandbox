@@ -46,14 +46,22 @@ print "Multiplier:                %s" % (multiplier)
 
 print "\nMy Numbers          :      %s" % (my_numbers)
 print "My Power Ball Number:      %s" % (my_powerball)
+
 print "\n"
 
 # but do they match?
 
 for i in winning_numbers:
-    for j in my_numbers:
-	if i == j:
+    for j in range(0, 4):
+        int_me = int(i)
+	if int_me == my_numbers[j]:
            print "%s is a match" % (i)
-	else:
-           print "Sorry - No matches"
-           break
+
+# how about the power ball?
+
+int_meh = int(winning_powerball_number)
+if int_meh == my_powerball:
+    print "\nPower Ball %s is a match" % (my_powerball)
+else:
+    print "\nSorry - the Power Ball numbers do not match"
+print "\n"
