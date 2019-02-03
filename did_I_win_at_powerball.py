@@ -48,8 +48,6 @@ print "Multiplier:                %s" % (multiplier)
 print "\nMy Numbers          :      %s" % (my_numbers)
 print "My Power Ball Number:      %s" % (my_powerball)
 
-print "\n"
-
 # but do they match?
 
 for i in winning_numbers:
