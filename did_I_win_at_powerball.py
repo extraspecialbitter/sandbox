@@ -20,6 +20,7 @@ my_raw_numbers = [1, 8, 16, 28, 44, 8]
 my_numbers = my_raw_numbers[0:5]
 my_powerball = my_raw_numbers[5]
 matches = 0
+pb_matches = 0
 
 # read in the JSON data
 
@@ -64,6 +65,7 @@ if matches == 0:
 int_meh = int(winning_powerball_number)
 if int_meh == my_powerball:
     print "\nPower Ball %s is a match" % (my_powerball)
+    pb_matches += 1
 else:
     print "\nSorry - the Power Ball numbers do not match"
 print "\n"
