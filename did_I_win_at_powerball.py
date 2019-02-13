@@ -55,7 +55,7 @@ for i in winning_numbers:
     for j in range(0, 4):
         int_me = int(i)
 	if int_me == my_numbers[j]:
-           print "%s is a match" % (i)
+           print "\n%s is a match" % (i)
            matches += 1
 if matches == 0:
     print "\nSorry - no matches"
