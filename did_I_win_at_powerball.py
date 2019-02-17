@@ -34,7 +34,7 @@ f.close()
 raw_winning_numbers = parsed_json[0]["field_winning_numbers"]
 winning_printable = raw_winning_numbers[0:14]
 winning_array = raw_winning_numbers.split(",")
-winning_numbers = winning_array[0:4]
+winning_numbers = winning_array[0:5]
 winning_powerball_number = winning_array[5]
 multiplier = parsed_json[0]["field_multiplier"]
 draw_date = parsed_json[0]["field_draw_date"]
@@ -52,11 +52,12 @@ print "My Power Ball Number:      %s" % (my_powerball)
 # but do they match?
 
 for i in winning_numbers:
-    for j in range(0, 4):
+    for j in range(0, 5):
         int_num = int(i)
 	if int_num == my_numbers[j]:
            print "\n%s is a match" % (i)
            matches += 1
+#       print "\n%s is not a match" % (i)
 if matches == 0:
     print "\nSorry - no matches"
 
@@ -84,13 +85,16 @@ if pb_matches == 1:
       print "\nYou win $50,000"
    if matches == 5:
       print "\nYou win the Jackpot!"
-if matches == 0 or matches == 1 or matches == 2:
-   print "\nSorry - you do not win a prize"
-if matches == 3:
-   print "\nYou win $7"
-if matches == 4:
-   print "\nYou win $100"
-if matches == 5:
+if pb_matches == 0:
+   if matches == 0 or matches == 1 or matches == 2:
+      print "\nSorry - you do not win a prize"
+   if matches == 3:
+      print "\nYou win $7"
+   if matches == 4:
+      print "\nYou win $100"
+   if matches == 5:
       print "\nYou win $1,000,000!"
 
+# print "\nmatches = %s " % (matches)
+# print "\npb_matches = %s " % (pb_matches)
 print "\n"
