@@ -53,8 +53,8 @@ print "My Power Ball Number:      %s" % (my_powerball)
 
 for i in winning_numbers:
     for j in range(0, 4):
-        int_me = int(i)
-	if int_me == my_numbers[j]:
+        int_num = int(i)
+	if int_num == my_numbers[j]:
            print "\n%s is a match" % (i)
            matches += 1
 if matches == 0:
@@ -62,10 +62,35 @@ if matches == 0:
 
 # how about the power ball?
 
-int_meh = int(winning_powerball_number)
-if int_meh == my_powerball:
+int_pb = int(winning_powerball_number)
+if int_pb == my_powerball:
     print "\nPower Ball %s is a match" % (my_powerball)
     pb_matches += 1
 else:
     print "\nSorry - the Power Ball numbers do not match"
+
+# what did I win?
+
+if pb_matches == 1:
+   if matches == 0:
+      print "\nYou win $4"
+   if matches == 1:
+      print "\nYou win $4"
+   if matches == 2:
+      print "\nYou win $7"
+   if matches == 3:
+      print "\nYou win $100"
+   if matches == 4:
+      print "\nYou win $50,000"
+   if matches == 5:
+      print "\nYou win the Jackpot!"
+if matches == 0 or matches == 1 or matches == 2:
+   print "\nSorry - you do not win a prize"
+if matches == 3:
+   print "\nYou win $7"
+if matches == 4:
+   print "\nYou win $100"
+if matches == 5:
+      print "\nYou win $1,000,000!"
+
 print "\n"
