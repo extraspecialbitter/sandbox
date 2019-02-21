@@ -59,7 +59,7 @@ for i in winning_numbers:
            matches += 1
 #       print "\n%s is not a match" % (i)
 if matches == 0:
-    print "\nSorry - no matches"
+    print "\nSorry - no matches with your number"
 
 # how about the power ball?
 
@@ -68,7 +68,7 @@ if int_pb == my_powerball:
     print "\nPower Ball %s is a match" % (my_powerball)
     pb_matches += 1
 else:
-    print "\nSorry - the Power Ball numbers do not match"
+    print "\nSorry - the Power Ball number does not match"
 
 # what did I win?
 
