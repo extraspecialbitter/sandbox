@@ -36,8 +36,7 @@ elif len(sys.argv) == 2:
     elif station == 'way':
         url_coord = urlbase + '42.3209,-71.3642'
     elif station == 'cc':
-        url_forecast = urlbase + 'geolookup/conditions/forecast/q/zmw:02632.1.99999.json'
-        url_sunrise  = urlbase + 'astronomy/q/zmw:02632.1.99999.json'
+        url_coord = urlbase + '41.6488,-70.348'
     elif station == 'rb':
         url_forecast = urlbase + 'geolookup/conditions/forecast/q/zmw:90277.1.99999.json'
         url_sunrise  = urlbase + 'astronomy/q/zmw:90277.1.99999.json'
@@ -52,26 +51,32 @@ elif len(sys.argv) == 2:
         print "\n"
         sys.exit(1)
 
-# read in the JSON forecast data
+# read in the JSON metadata
 
 f = urllib2.urlopen(url_coord)
 json_string = f.read()
 parsed_json = json.loads(json_string)
 
-# start parsing current weather
+# start parsing metadata
 
-location = parsed_json['properties']['relativeLocation']['properties']['city']
-# c_time = parsed_json['current_observation']['observation_time']
-# weather = parsed_json['current_observation']['weather']
-# temp_f = parsed_json['current_observation']['temp_f']
-# wind_mph = parsed_json['current_observation']['wind_mph']
-# humidity = parsed_json['current_observation']['relative_humidity']
-# forecast_date = parsed_json['forecast']['txt_forecast']['date']
-# forecast_array = parsed_json['forecast']['txt_forecast']['forecastday']
+city = parsed_json['properties']['relativeLocation']['properties']['city']
+state = parsed_json['properties']['relativeLocation']['properties']['state']
 
-# and print
+# print location
 
-print "\nWeather in %s" % (location)
+print "\nForecast for %s, %s" % (city, state)
+
+# read in forecast data
+
+url_forecast = parsed_json['properties']['forecast']
+f.close()
+
+g = urllib2.urlopen(url_forecast)
+json_string = g.read()
+parsed_json = json.loads(json_string)
+
+# parse forecast data
+
 # print "    Currently: %s, %s" % (weather, temp_f)
 # print "         Wind: %s mph" % (wind_mph)
 # print "     Humidity: %s\n" % (humidity)
@@ -81,10 +86,10 @@ print "\nWeather in %s" % (location)
 
 # parse and print the forecast
 
-# for i in range(0, 8):
-#     forecast_title = parsed_json['forecast']['txt_forecast']['forecastday'][i]['title']
-#     forecast_data  = parsed_json['forecast']['txt_forecast']['forecastday'][i]['fcttext']
-#     print "    %s: %s" % (forecast_title, forecast_data)
-# print "\n"
-f.close()
+for i in range(0, 6):
+    forecast_title = parsed_json['properties']['periods'][i]['name']
+    forecast_data  = parsed_json['properties']['periods'][i]['detailedForecast']
+    print "    %s: %s" % (forecast_title, forecast_data)
+print "\n"
+g.close()
 
