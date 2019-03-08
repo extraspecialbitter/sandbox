@@ -52,7 +52,7 @@ f.close()
 
 city = parsed_json['properties']['relativeLocation']['properties']['city']
 state = parsed_json['properties']['relativeLocation']['properties']['state']
-print "\nForecast for %s, %s" % (city, state)
+print "\nCurrent weather for %s, %s:" % (city, state)
 
 # read in forecast and observation station URLs
 
@@ -61,22 +61,28 @@ url_stations = parsed_json['properties']['observationStations']
 
 # read in observation station data
 
-# g = urllib2.urlopen(url_stations)
-# json_string = g.read()
-# parsed_json = json.loads(json_string)
-# g.close()
+g = urllib2.urlopen(url_stations)
+json_string = g.read()
+parsed_json = json.loads(json_string)
+g.close()
 
 # get station ID
 
-# station_id = parsed_json['features']['properties']['@id']
-# url_observation = station_id + '/observations/latest'
+station_id = parsed_json['features'][0]['id']
+url_observation = station_id + '/observations/latest'
 
 # read in observed data
 
-# h = urllib2.urlopen(url_observation)
-# json_string = h.read()
-# parsed_json = json.loads(json_string)
-# h.close()
+h = urllib2.urlopen(url_observation)
+json_string = h.read()
+parsed_json = json.loads(json_string)
+h.close()
+
+current_desc = parsed_json['properties']['textDescription']
+current_temp_c = parsed_json['properties']['temperature']['value']
+current_temp_f = 9.0/5.0 * current_temp_c + 32
+current_temp_f = int(round(current_temp_f))
+print "%s, %s" % (current_desc, current_temp_f)
 
 # read in forecast data
 
@@ -85,17 +91,9 @@ json_string = i.read()
 parsed_json = json.loads(json_string)
 i.close()
 
-# parse forecast data
-
-# print "    Currently: %s, %s" % (weather, temp_f)
-# print "         Wind: %s mph" % (wind_mph)
-# print "     Humidity: %s\n" % (humidity)
-# print "Forecast:"
-# print "Date: %s" % (forecast_date)
-# print "Debug: %s" % (forecast_array)
-
 # parse and print the forecast
 
+print "\nForecast:"
 for i in range(0, 6):
     forecast_title = parsed_json['properties']['periods'][i]['name']
     forecast_data  = parsed_json['properties']['periods'][i]['detailedForecast']
