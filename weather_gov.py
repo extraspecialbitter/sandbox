@@ -17,35 +17,25 @@ import json
 
 if len(sys.argv) != 2:
     print "\nUsage:"
-    print "%s [ mx | mi | fl | way | cc | rb | nyc | ca ]" % sys.argv[0]
+    print "%s [ mi | fl | way | cc | rb | nyc ]" % sys.argv[0]
     print "\n"
     sys.exit(1)
 elif len(sys.argv) == 2:
     station = sys.argv[1]
     urlbase = 'https://api.weather.gov/points/'
 
-    if station == 'mx':
-        url_forecast = urlbase + 'geolookup/conditions/forecast/q/zmw:00000.3.WMMSL.json'
-        url_sunrise  = urlbase + 'astronomy/q/zmw:00000.3.WMMSL.json'
-    elif station == 'mi':
-        url_forecast = urlbase + 'geolookup/conditions/forecast/q/MI/Munising.json'
-        url_sunrise  = urlbase + 'astronomy/q/MI/Munising.json'
+    if station == 'mi':
+        url_coord = urlbase + '46.4116,-86.655'
     elif station == 'fl':
-        url_forecast = urlbase + 'geolookup/conditions/forecast/q/zmw:34101.1.99999.json'
-        url_sunrise  = urlbase + 'astronomy/q/zmw:34101.1.99999.json'
+        url_coord = urlbase + '26.142,-81.7948'
     elif station == 'way':
         url_coord = urlbase + '42.3209,-71.3642'
     elif station == 'cc':
         url_coord = urlbase + '41.6488,-70.348'
     elif station == 'rb':
-        url_forecast = urlbase + 'geolookup/conditions/forecast/q/zmw:90277.1.99999.json'
-        url_sunrise  = urlbase + 'astronomy/q/zmw:90277.1.99999.json'
+        url_coord = urlbase + '33.845,-118.3872'
     elif station == 'nyc':
-        url_forecast = urlbase + 'geolookup/conditions/forecast/q/NY/NewYork.json'
-        url_sunrise  = urlbase + 'astronomy/q/NY/NewYork.json'
-    elif station == 'ca':
-        url_forecast = urlbase + 'geolookup/conditions/forecast/q/pws:KCACAMBR16.json'
-        url_sunrise  = urlbase + 'astronomy/q/pws:KCACAMBR16.json'
+        url_coord = urlbase + '40.7128,-74.006'
     else:
         print "\nThis station feed has not been implemented yet."
         print "\n"
