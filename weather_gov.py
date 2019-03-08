@@ -41,29 +41,49 @@ elif len(sys.argv) == 2:
         print "\n"
         sys.exit(1)
 
-# read in the JSON metadata
+# read in the longitude and latitude coordinates
 
 f = urllib2.urlopen(url_coord)
 json_string = f.read()
 parsed_json = json.loads(json_string)
+f.close()
 
-# start parsing metadata
+# parse for and print location
 
 city = parsed_json['properties']['relativeLocation']['properties']['city']
 state = parsed_json['properties']['relativeLocation']['properties']['state']
-
-# print location
-
 print "\nForecast for %s, %s" % (city, state)
+
+# read in forecast and observation station URLs
+
+url_forecast = parsed_json['properties']['forecast']
+url_stations = parsed_json['properties']['observationStations']
+
+# read in observation station data
+
+# g = urllib2.urlopen(url_stations)
+# json_string = g.read()
+# parsed_json = json.loads(json_string)
+# g.close()
+
+# get station ID
+
+# station_id = parsed_json['features']['properties']['@id']
+# url_observation = station_id + '/observations/latest'
+
+# read in observed data
+
+# h = urllib2.urlopen(url_observation)
+# json_string = h.read()
+# parsed_json = json.loads(json_string)
+# h.close()
 
 # read in forecast data
 
-url_forecast = parsed_json['properties']['forecast']
-f.close()
-
-g = urllib2.urlopen(url_forecast)
-json_string = g.read()
+i = urllib2.urlopen(url_forecast)
+json_string = i.read()
 parsed_json = json.loads(json_string)
+i.close()
 
 # parse forecast data
 
@@ -81,5 +101,4 @@ for i in range(0, 6):
     forecast_data  = parsed_json['properties']['periods'][i]['detailedForecast']
     print "    %s: %s" % (forecast_title, forecast_data)
 print "\n"
-g.close()
 
