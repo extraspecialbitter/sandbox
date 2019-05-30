@@ -17,7 +17,7 @@ import json
 
 if len(sys.argv) != 2:
     print "\nUsage:"
-    print "%s [ mi | fl | way | cc | rb | nyc ]" % sys.argv[0]
+    print "%s [ mi | fl | way | cc | wh | rb | nyc ]" % sys.argv[0]
     print "\n"
     sys.exit(1)
 elif len(sys.argv) == 2:
@@ -32,6 +32,8 @@ elif len(sys.argv) == 2:
         url_coord = urlbase + '42.3209,-71.3642'
     elif station == 'cc':
         url_coord = urlbase + '41.6488,-70.348'
+    elif station == 'wh':
+        url_coord = urlbase + '41.5277,-70.6674'
     elif station == 'rb':
         url_coord = urlbase + '33.845,-118.3872'
     elif station == 'nyc':
