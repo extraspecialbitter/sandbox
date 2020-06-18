@@ -42,6 +42,6 @@ kelvin_temp = parsed_json['main']['temp']
 celsius_temp = kelvin_temp - 273.15
 fahrenheit_temp = celsius_temp * ( 9 / 5 ) + 32
 
-print "   %s, %s" % (weather_desc, fahrenheit_temp)
+print "      %s, %s" % (weather_desc, fahrenheit_temp)
 
 
