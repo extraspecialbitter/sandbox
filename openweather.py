@@ -20,7 +20,7 @@ api_key = 'c4a0b83ccd51f7b1d44d35419710b2b1'
 
 if len(sys.argv) != 2:
     print "\nUsage:"
-    print "%s [ mi | mx | way | cc | ym | bos | nyc | rb | li ]" % sys.argv[0]
+    print "%s [ mi | mx | pr | way | cc | ym | bos | nyc | rb | li ]" % sys.argv[0]
     print "\n"
     sys.exit(1)
 elif len(sys.argv) == 2:
@@ -44,6 +44,8 @@ elif len(sys.argv) == 2:
         city_id = '4931972'
     elif station == 'nyc':
         city_id = '5128581'
+    elif station == 'pr':
+        city_id = '4568127'
     else:
         print "\nThis station feed has not been implemented yet."
         print "\n"
