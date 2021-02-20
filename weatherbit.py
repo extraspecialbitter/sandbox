@@ -104,7 +104,7 @@ data = parsed_json["data"]
 
 print ("\nForecast:")
 
-for i in range(0, 6):
+for i in range(0, 7):
     day = data[i]
     date = day["valid_date"]
     weather = day["weather"]
