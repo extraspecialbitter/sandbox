@@ -21,7 +21,7 @@ api_key = "91b2e05a9ef84a5586b4a42d49c0d7ac"
 
 if len(sys.argv) != 2:
     print ("\nUsage:")
-    print ("%s [ mi | mx | pr | way | cc | ym | bos | nyc | ca | rb | li ]" % sys.argv[0])
+    print ("%s [ tx | mi | mx | pr | way | cc | wh | bos | nyc | ca | rb | li ]" % sys.argv[0])
     print ("\n")
     sys.exit(1)
 elif len(sys.argv) == 2:
@@ -30,26 +30,42 @@ elif len(sys.argv) == 2:
     if station == 'cc':
         lat = 41.6483
         lon = -70.3366
-#   elif station == 'mx':
-#       city_id = '3985710'
-#   elif station == 'ym':
-#       city_id = '4956335'
-#   elif station == 'mi':
-#       city_id = '5000947'
-#   elif station == 'way':
-#       city_id = '4937230'
-#   elif station == 'rb':
-#       city_id = '5386785'
-#   elif station == 'ca':
-#       city_id = '5402405'
-#   elif station == 'li':
-#       city_id = '5116060'
-#   elif station == 'bos':
-#       city_id = '4931972'
-#   elif station == 'nyc':
-#       city_id = '5128581'
-#   elif station == 'pr':
-#       city_id = '4568127'
+    elif station == 'mx':
+        lat = 23.4653
+        lon = -110.2569
+    elif station == 'wh':
+        lat = 41.5411
+        lon = -70.6486
+    elif station == 'tx':
+        lat = 29.4241
+        lon = -98.4936
+    elif station == 'mi':
+        lat = 46.4115
+        lon = -86.6550
+    elif station == 'way':
+        lat = 42.3164
+        lon = -71.3642
+    elif station == 'rb':
+        lat = 33.8449
+        lon = -118.3872
+    elif station == 'ca':
+        lat = 34.1513
+        lon = -118.8187
+    elif station == 'li':
+        lat = 40.9091
+        lon = -73.0169
+    elif station == 'bos':
+        lat = 42.3657
+        lon = -71.0096
+    elif station == 'nyc':
+        lat = 40.7033
+        lon = -73.9421
+    elif station == 'pr':
+        lat = 18.0961
+        lon = -65.4866
+    elif station == 'ky':
+        lat = -0.4466
+        lon = 39.6518
     else:
         print ("\nThis station feed has not been implemented yet.")
         print ("\n")
