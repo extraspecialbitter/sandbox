@@ -101,6 +101,7 @@ weather = data[0]["weather"]
 weather_desc = weather["description"]
 celsius_temp = data[0]["temp"]
 fahrenheit_temp = celsius_temp * 1.8 + 32
+fahrenheit_temp = round(fahrenheit_temp, 2)
 print (" %s, %s" % (weather_desc, fahrenheit_temp))
 
 # read in the forecast JSON
@@ -127,8 +128,10 @@ for i in range(0, 7):
     description = weather["description"]
     min_temp = day["min_temp"]
     min_temp = min_temp * 1.8 + 32
+    min_temp = round(min_temp, 2)
     max_temp = day["max_temp"]
     max_temp = max_temp * 1.8 + 32
+    max_temp = round(max_temp, 2)
     print (" %s : %s, low: %s, high: %s" % (date, description, min_temp, max_temp))
 print ("\n")
 
