@@ -27,6 +27,6 @@ raw_string = str(raw_string)
 # print ("\nraw string: %s" % (raw_string))
 
 if search_string in raw_string:
-  print ('match')
+  print ("\nThe website %s returned the expected content\n" % (url_query))
 else:
   print ('did not find')
