@@ -16,7 +16,8 @@ import json
 
 # read in the JSON file
 
-f = open("/home/pablo/tmp/dashboard.json", "r")
+# f = open("/home/pablo/tmp/dashboard.json", "r")
+f = open("./dashboard.json", "r")
 json_string = f.read()
 parsed_json = json.loads(json_string)
 f.close()
