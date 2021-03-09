@@ -105,10 +105,10 @@ print ("\nCurrent weather for %s, %s, %s:" % (city, state, country))
 weather = data[0]["weather"]
 # print ("\nweather: %s" % (weather))
 weather_desc = weather["description"]
-celsius_temp = data[0]["temp"]
-fahrenheit_temp = celsius_temp * 1.8 + 32
-fahrenheit_temp = round(fahrenheit_temp, 2)
-print (" %s, %s" % (weather_desc, fahrenheit_temp))
+current_temp = data[0]["temp"]
+current_temp = current_temp * 1.8 + 32
+current_temp = round(current_temp, 2)
+print (" %s, %s" % (weather_desc, current_temp))
 
 # read in the forecast JSON
 
