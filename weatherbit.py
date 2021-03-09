@@ -21,7 +21,7 @@ api_key = "91b2e05a9ef84a5586b4a42d49c0d7ac"
 
 if len(sys.argv) != 2:
     print ("\nUsage:")
-    print ("%s [ tx | mi | mx | pr | way | cc | wh | bos | nyc | ca | rb | li ]" % sys.argv[0])
+    print ("%s [ tx | mi | ts | gj | scc | pr | way | cc | wh | bos | nyc | ca | rb | li ]" % sys.argv[0])
     print ("\n")
     sys.exit(1)
 elif len(sys.argv) == 2:
@@ -30,9 +30,15 @@ elif len(sys.argv) == 2:
     if station == 'cc':
         lat = 41.6483
         lon = -70.3366
-    elif station == 'mx':
+    elif station == 'ts':
         lat = 23.4653
         lon = -110.2569
+    elif station == 'gj':
+        lat = 20.6597
+        lon = -103.3496
+    elif station == 'scc':
+        lat = 16.7370
+        lon = -92.6376
     elif station == 'wh':
         lat = 41.5411
         lon = -70.6486
