@@ -139,9 +139,11 @@ for i in range(0, 7):
     max_temp = max_temp * 1.8 + 32
     max_temp = round(max_temp, 2)
     sunrise_ts = day["sunrise_ts"]
-    sunrise_utc = datetime.utcfromtimestamp(sunrise_ts).strftime('%H:%M:%S')
+#   sunrise_utc = datetime.utcfromtimestamp(sunrise_ts).strftime('%H:%M:%S')
+    sunrise_utc = datetime.fromtimestamp(sunrise_ts).strftime('%H:%M:%S')
     sunset_ts = day["sunset_ts"]
-    sunset_utc = datetime.utcfromtimestamp(sunset_ts).strftime('%H:%M:%S')
+#   sunset_utc = datetime.utcfromtimestamp(sunset_ts).strftime('%H:%M:%S')
+    sunset_utc = datetime.fromtimestamp(sunset_ts).strftime('%H:%M:%S')
     print (" %s : %s, low: %s, high: %s" % (date, description, min_temp, max_temp))
     print ("              Sunrise: %s, Sunset: %s" % (sunrise_utc, sunset_utc))
 print ("\n")
