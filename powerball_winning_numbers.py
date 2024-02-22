@@ -5,8 +5,8 @@
 from datetime import datetime, timedelta
 from sys import argv
 from os.path import join
-import urllib2
-import commands, os, socket, subprocess
+import urllib.request
+import os, socket, subprocess
 import time
 import getopt
 import sys 
@@ -17,9 +17,14 @@ pburl = 'https://www.powerball.com/api/v1/numbers/powerball/recent10?_format=jso
 
 # read in the JSON data
 
-f = urllib2.urlopen(pburl)
+f = urllib.request.urlopen(pburl)
 json_string = f.read()
 parsed_json = json.loads(json_string)
+f.close()
+
+# debug stuff
+print ("json string: {json_string}")
+# print ("\nparsed json: %s" % (parsed_json))
 
 # parse latest numbers
 
@@ -29,10 +34,12 @@ draw_date = parsed_json[0]["field_draw_date"]
 
 # and print
 
-print "\nDraw Date:       %s" % (draw_date)
-print "Winning Numbers: %s" % (winning_numbers)
-print "Multiplier:      %s" % (multiplier)
+# print "\nDraw Date:       %s" % (draw_date)
+# print "Winning Numbers: %s" % (winning_numbers)
+# print "Multiplier:      %s" % (multiplier)
+print ("Draw Date: {draw_date}")
+print ("Winning Numbers: {winning_numbers}")
+print ("Multiplier:      {multiplier}")
 
-print "\n"
-f.close()
+# print "\n"
 
