@@ -36,6 +36,9 @@ elif len(sys.argv) == 2:
     elif station == 'jax':
         lat = 30.3322
         lon = -81.6557
+    elif station == 'pme':
+        lat = 43.6591
+        lon = -70.2568
     elif station == 'cdmx':
         lat = 19.4326
         lon = -99.1332
