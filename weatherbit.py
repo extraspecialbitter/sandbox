@@ -178,7 +178,7 @@ for i in range(0, 7):
 #   sunset_utc = datetime.utcfromtimestamp(sunset_ts).strftime('%H:%M:%S')
     sunset_utc = datetime.fromtimestamp(sunset_ts).strftime('%H:%M:%S')
     print (" %s : %s, low: %s, high: %s" % (date, description, min_temp, max_temp))
-    if station == 'cc':
-       print ("              Sunrise: %s, Sunset: %s" % (sunrise_utc, sunset_utc))
+#   if station == 'cc':
+    print ("              Sunrise: %s, Sunset: %s" % (sunrise_utc, sunset_utc))
 print ("\n")
 
