@@ -143,6 +143,11 @@ current_temp = current_temp * 1.8 + 32
 current_temp = round(current_temp, 2)
 print (" %s, %s" % (weather_desc, current_temp))
 
+# parse and print time of observation
+
+ob_time = data[0]["ob_time"]
+print ("\nTime of Obervation: %s:" % (ob_time))
+
 # read in the forecast JSON
 
 forecast_url_query = urlbase + 'forecast/daily?lat=' + lat + '&lon=' + lon + '&key=' + api_key
