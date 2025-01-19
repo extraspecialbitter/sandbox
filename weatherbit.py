@@ -145,8 +145,10 @@ print (" %s, %s" % (weather_desc, current_temp))
 
 # parse and print time of observation
 
-ob_time = data[0]["ob_time"]
-print ("\nTime of Obervation: %s:" % (ob_time))
+stimezone = data[0]["timezone"]
+print ("\nStation Timezone: %s" % (stimezone))
+tz_date = subprocess.check_output(f'TZ={stimezone} date', shell=True).decode('utf-8').strip()
+print(f"Local Time: {tz_date}")
 
 # read in the forecast JSON
 
