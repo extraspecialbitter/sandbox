@@ -21,7 +21,7 @@ api_key = "91b2e05a9ef84a5586b4a42d49c0d7ac"
 
 if len(sys.argv) != 2:
     print ("\nUsage:")
-    print ("%s [ cr | phx | dfw | mi | ts | ofl | cdmx | scc | pr | vqs | way | cc | wh | bos | nyc | nz | vic | osu | ber | li | pt | gar | nola ]" % sys.argv[0])
+    print ("%s [ cr | phx | dfw | mi | ts | ofl | cdmx | scc | pr | vqs | way | cc | wh | bos | nyc | nz | vic | osu | pc | li | pt | gar | nola ]" % sys.argv[0])
     print ("\n")
     sys.exit(1)
 elif len(sys.argv) == 2:
@@ -72,9 +72,9 @@ elif len(sys.argv) == 2:
     elif station == 'vic':
         lat = 43.6027
         lon = -111.1114
-    elif station == 'ber':
-        lat = 32.3668 
-        lon = -64.6836
+    elif station == 'pc':
+        lat = 9.8689
+        lon = -85.4814
     elif station == 'osu':
         lat = 44.5646
         lon = -123.2620
@@ -110,38 +110,62 @@ elif len(sys.argv) == 2:
         print ("\n")
         sys.exit(1)
 
-# Make single API call to get both current conditions and forecast
+# read in the current weather JSON
+
 lat = str(lat)
 lon = str(lon)
-forecast_url_query = urlbase + 'forecast/daily?lat=' + lat + '&lon=' + lon + '&key=' + api_key
-f = urllib.request.urlopen(forecast_url_query)
+current_url_query = urlbase + 'current?lat=' + lat + '&lon=' + lon + '&key=' + api_key 
+f = urllib.request.urlopen(current_url_query)
 json_string = f.read()
 parsed_json = json.loads(json_string)
 f.close()
 
-data = parsed_json["data"]
-city_name = parsed_json["city_name"]
-state_code = parsed_json["state_code"]
-country_code = parsed_json["country_code"]
-timezone = parsed_json["timezone"]
+# print ("\njson string: %s" % (json_string))
+# print ("\nparsed json: %s" % (parsed_json))
 
-# Print current conditions (first day in forecast)
-current_day = data[0]
-current_weather = current_day["weather"]
-current_temp = current_day["temp"]
+# parse for and print location
+
+data = parsed_json["data"]
+# print ("\ndata: %s" % (data))
+
+country = data[0]["country_code"]
+city = data[0]["city_name"]
+state = data[0]["state_code"]
+print ("\nCurrent weather for %s, %s, %s:" % (city, state, country))
+
+# parse for weather description and temperature
+
+weather = data[0]["weather"]
+# print ("\nweather: %s" % (weather))
+weather_desc = weather["description"]
+current_temp = data[0]["temp"]
 current_temp = current_temp * 1.8 + 32
 current_temp = round(current_temp, 2)
+print (" %s, %s" % (weather_desc, current_temp))
 
-print("\nCurrent weather for %s, %s, %s:" % (city_name, state_code, country_code))
-print(" %s, %s" % (current_weather["description"], current_temp))
+# parse and print time of observation
 
-# Print timezone information
-print("\nStation Timezone: %s" % timezone)
-tz_date = subprocess.check_output(f'TZ={timezone} date', shell=True).decode('utf-8').strip()
+stimezone = data[0]["timezone"]
+print ("\nStation Timezone: %s" % (stimezone))
+tz_date = subprocess.check_output(f'TZ={stimezone} date', shell=True).decode('utf-8').strip()
 print(f"Local Time: {tz_date}")
 
-# Print forecast
-print("\nForecast:")
+# read in the forecast JSON
+
+forecast_url_query = urlbase + 'forecast/daily?lat=' + lat + '&lon=' + lon + '&key=' + api_key
+g = urllib.request.urlopen(forecast_url_query)
+json_string = g.read()
+parsed_json = json.loads(json_string)
+g.close()
+
+# print ("\njson string: %s" % (json_string))
+# print ("\nparsed json: %s" % (parsed_json))
+
+# parse for and print forecast
+
+data = parsed_json["data"]
+
+print ("\nForecast:")
 
 for i in range(0, 7):
     day = data[i]
@@ -155,9 +179,13 @@ for i in range(0, 7):
     max_temp = max_temp * 1.8 + 32
     max_temp = round(max_temp, 2)
     sunrise_ts = day["sunrise_ts"]
+#   sunrise_utc = datetime.utcfromtimestamp(sunrise_ts).strftime('%H:%M:%S')
     sunrise_utc = datetime.fromtimestamp(sunrise_ts).strftime('%H:%M:%S')
     sunset_ts = day["sunset_ts"]
+#   sunset_utc = datetime.utcfromtimestamp(sunset_ts).strftime('%H:%M:%S')
     sunset_utc = datetime.fromtimestamp(sunset_ts).strftime('%H:%M:%S')
-    print(" %s : %s, low: %s, high: %s" % (date, description, min_temp, max_temp))
-    print("              Sunrise: %s, Sunset: %s" % (sunrise_utc, sunset_utc))
-print("\n")
+    print (" %s : %s, low: %s, high: %s" % (date, description, min_temp, max_temp))
+#   if station == 'cc':
+    print ("              Sunrise: %s, Sunset: %s" % (sunrise_utc, sunset_utc))
+print ("\n")
+
