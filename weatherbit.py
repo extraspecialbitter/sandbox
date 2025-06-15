@@ -13,6 +13,7 @@ import getopt
 import sys 
 import os
 import json
+import pytz
 
 urlbase = 'https://api.weatherbit.io/v2.0/'
 api_key = "91b2e05a9ef84a5586b4a42d49c0d7ac"
@@ -128,6 +129,9 @@ state_code = parsed_json["state_code"]
 country_code = parsed_json["country_code"]
 timezone = parsed_json["timezone"]
 
+# Create timezone object for conversions
+local_tz = pytz.timezone(timezone)
+
 # Print current conditions (first day in forecast)
 current_day = data[0]
 current_weather = current_day["weather"]
@@ -157,10 +161,16 @@ for i in range(0, 7):
     max_temp = day["max_temp"]
     max_temp = max_temp * 1.8 + 32
     max_temp = round(max_temp, 2)
+    
+    # Convert sunrise/sunset from UTC to local timezone
     sunrise_ts = day["sunrise_ts"]
-    sunrise_utc = datetime.fromtimestamp(sunrise_ts).strftime('%H:%M:%S')
+    sunrise_utc = datetime.fromtimestamp(sunrise_ts, tz=pytz.UTC)
+    sunrise_local = sunrise_utc.astimezone(local_tz).strftime('%H:%M:%S')
+    
     sunset_ts = day["sunset_ts"]
-    sunset_utc = datetime.fromtimestamp(sunset_ts).strftime('%H:%M:%S')
+    sunset_utc = datetime.fromtimestamp(sunset_ts, tz=pytz.UTC)
+    sunset_local = sunset_utc.astimezone(local_tz).strftime('%H:%M:%S')
+    
     print(" %s : %s, low: %s, high: %s" % (date, description, min_temp, max_temp))
-    print("              Sunrise: %s, Sunset: %s" % (sunrise_utc, sunset_utc))
+    print("              Sunrise: %s, Sunset: %s" % (sunrise_local, sunset_local))
 print("\n")
