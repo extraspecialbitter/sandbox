@@ -22,7 +22,7 @@ api_key = "91b2e05a9ef84a5586b4a42d49c0d7ac"
 
 if len(sys.argv) != 2:
     print ("\nUsage:")
-    print ("%s [ cr | clt | dfw | mi | ts | ofl | cdmx | pvd | pr | vqs | way | cc | wh | bos | nyc | nz | vic | osu | ber | li | pt | gar | nola | fll ]" % sys.argv[0])
+    print ("%s [ cr | clt | dfw | mi | ts | ofl | cdmx | pvd | pr | vqs | way | cc | wh | bos | nyc | nz | vic | osu | ber | li | pt | gar | nola | fll | esp ]" % sys.argv[0])
     print ("\n")
     sys.exit(1)
 elif len(sys.argv) == 2:
@@ -109,6 +109,9 @@ elif len(sys.argv) == 2:
     elif station == 'fll':
         lat = 26.1224
         lon = -80.1373
+    elif station == 'esp':
+        lat = 36.7323
+        lon = 3.6884
     else:
         print ("\nThis station feed has not been implemented yet.")
         print ("\n")
