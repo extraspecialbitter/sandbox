@@ -22,7 +22,7 @@ api_key = "91b2e05a9ef84a5586b4a42d49c0d7ac"
 
 if len(sys.argv) != 2:
     print ("\nUsage:")
-    print ("%s [ cr | clt | dfw | mi | ts | ofl | cdmx | pvd | pr | vqs | way | cc | wh | bos | nyc | nz | vic | osu | ber | li | pt | gar | nola | fll | esp ]" % sys.argv[0])
+    print ("%s [ cr | clt | dfw | mi | ts | ofl | cdmx | pvd | pr | vqs | way | plv | cc | wh | bos | nyc | nz | vic | osu | ber | li | pt | gar | nola | fll | esp ]" % sys.argv[0])
     print ("\n")
     sys.exit(1)
 elif len(sys.argv) == 2:
@@ -64,9 +64,9 @@ elif len(sys.argv) == 2:
     elif station == 'way':
         lat = 42.3164
         lon = -71.3642
-    elif station == 'rb':
-        lat = 33.8449
-        lon = -118.3872
+    elif station == 'plv':
+        lat = 42.0043
+        lon = -71.3328
     elif station == 'nz':
         lat = -41.8833
         lon = 173.6666
