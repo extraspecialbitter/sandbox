@@ -1,12 +1,11 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 # This script fetches the weather from the openweathermap.org API site and prints it out.
 
 from datetime import datetime, timedelta
 from sys import argv
 from os.path import join
-import urllib2
-import commands, os, socket, subprocess
+import urllib.request
 import time
 import getopt
 import sys 
@@ -20,19 +19,18 @@ city_id = '4929771'
 # read in the longitude and latitude coordinates
 
 url_query = urlbase + '?id=' + city_id + '&appid=' + api_key
-f = urllib2.urlopen(url_query)
-json_string = f.read()
-parsed_json = json.loads(json_string)
-f.close()
+with urllib.request.urlopen(url_query) as f:
+    json_string = f.read().decode('utf-8')
+    parsed_json = json.loads(json_string)
 
-# print "\njson string: %s" % (json_string)
-# print "\nparsed json: %s" % (parsed_json)
+# print("\njson string: %s" % (json_string))
+# print("\nparsed json: %s" % (parsed_json))
 
 # parse for and print location
 
 city = parsed_json['name']
 country = parsed_json['sys']['country']
-print "\nCurrent weather for %s, %s:" % (city, country)
+print(f"\nCurrent weather for {city}, {country}:")
 
 # parse for weather description and temperature
 
@@ -42,6 +40,4 @@ kelvin_temp = parsed_json['main']['temp']
 celsius_temp = kelvin_temp - 273.15
 fahrenheit_temp = celsius_temp * 1.8 + 32
 
-print "      %s, %s" % (weather_desc, fahrenheit_temp)
-
-
+print(f"      {weather_desc}, {fahrenheit_temp:.1f}°F")
