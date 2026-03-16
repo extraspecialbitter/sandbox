@@ -111,7 +111,7 @@ elif len(sys.argv) == 2:
         lon = -80.1373
     elif station == 'esp':
         lat = 36.7323
-        lon = 3.6884
+        lon = -3.6884
     else:
         print ("\nThis station feed has not been implemented yet.")
         print ("\n")
