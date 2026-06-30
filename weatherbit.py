@@ -23,7 +23,7 @@ api_key = "91b2e05a9ef84a5586b4a42d49c0d7ac"
 
 if len(sys.argv) != 2:
     print ("\nUsage:")
-    print ("%s [ cr | clt | dfw | mi | ts | sr | ply | pvd | pr | vqs | way | plv | cc | wh | bos | nyc | nz | vic | osu | ber | li | pt | gar | nola | fll | esp | ave ]" % sys.argv[0])
+    print ("%s [ cr | clt | dfw | mi | ts | mad | ply | pvd | pr | vqs | way | plv | cc | wh | bos | nyc | nz | vic | pwm | ber | li | pt | gar | nola | fll | esp | ave ]" % sys.argv[0])
     print ("\n")
     sys.exit(1)
 elif len(sys.argv) == 2:
@@ -50,9 +50,9 @@ elif len(sys.argv) == 2:
     elif station == 'cr':
         lat = 9.8715
         lon = -85.4933
-    elif station == 'sr':
-        lat = 10.0875
-        lon = -84.4700
+    elif station == 'mad':
+        lat = 40.4167
+        lon = -3.7033
     elif station == 'dfw':
         lat = 32.7079
         lon = -96.9209
@@ -77,9 +77,9 @@ elif len(sys.argv) == 2:
     elif station == 'ber':
         lat = 32.3668 
         lon = -64.6836
-    elif station == 'osu':
-        lat = 44.5646
-        lon = -123.2620
+    elif station == 'pwm':
+        lat = 43.6615
+        lon = -70.2553
     elif station == 'li':
         lat = 40.9091
         lon = -73.0169
