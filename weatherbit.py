@@ -32,7 +32,7 @@ elif len(sys.argv) == 2:
     if station == 'cc':
         lat = 41.6483
         lon = -70.3366
-    if station == 'ack':
+    elif station == 'ack':
         lat = 41.2860
         lon = -70.0955
     elif station == 'ts':
